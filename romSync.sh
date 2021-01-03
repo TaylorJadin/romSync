@@ -5,7 +5,7 @@ device1='piboy'
 device2='gpi'
 sync="rsync -nrPt --exclude-from=/mnt/user/appdata/bin/exclude.txt"
 mirror="rsync -nrPt --del --exclude-from=/mnt/user/appdata/bin/exclude.txt"
-mirror-all="rsync -nrPt --del"
+mirrorAll="rsync -nrPt --del"
 
 ### Functions ###
 
@@ -20,12 +20,12 @@ pull() {
     echo ""
     echo "===================================="
     echo "Backing up configs from $device1"
-    $mirror-all pi@$device1:/opt/retropie/configs/ /mnt/user/backups/$device1/configs
+    $mirrorAll pi@$device1:/opt/retropie/configs/ /mnt/user/backups/$device1/configs
     echo "===================================="
     echo ""
     echo "===================================="
     echo "Backing up BIOS folder from $device1"
-    $mirror-all pi@$device1:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device1/BIOS
+    $mirrorAll pi@$device1:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device1/BIOS
     echo "===================================="
   fi
 
@@ -39,12 +39,12 @@ pull() {
     echo ""
     echo "===================================="
     echo "Backing up configs from $device2"
-    $mirror-all pi@$device2:/opt/retropie/configs/ /mnt/user/backups/$device2/configs
+    $mirrorAll pi@$device2:/opt/retropie/configs/ /mnt/user/backups/$device2/configs
     echo "===================================="
     echo ""
     echo "===================================="
     echo "Backing up BIOS folder from $device2"
-    $mirror-all pi@$device2:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device2/BIOS
+    $mirrorAll pi@$device2:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device2/BIOS
     echo "===================================="
   fi
 }

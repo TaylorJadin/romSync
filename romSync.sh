@@ -93,12 +93,12 @@ else
     case $1 in
         --push )      shift
                       echo "=============== Push ==============="
-                      echo ""
                       push
+                      echo ""
                       ;;
         --pull )      echo "=============== Pull ==============="
-                      echo ""
                       pull
+                      echo ""
                       ;;
         -h | --help ) usage
                       exit

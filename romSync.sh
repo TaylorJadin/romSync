@@ -3,9 +3,9 @@
 ### Variables ###
 device1='piboy'
 device2='gpi'
-sync="rsync -nrPt --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
-mirror="rsync -nrPt --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
-mirrorAll="rsync -nrPt --del"
+sync="rsync -rPt --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+mirror="rsync -rPt --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+mirrorAll="rsync -rPt --del"
 
 ### Functions ###
 

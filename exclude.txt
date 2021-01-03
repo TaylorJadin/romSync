@@ -1,0 +1,5 @@
+media
+gamelist*
+*.chd
+*.pbp
+*.nds

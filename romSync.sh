@@ -92,10 +92,12 @@ else
     while [ "$1" != "" ]; do
     case $1 in
         --push )      shift
-                      read -t 3 -p "=== Push only mode ==="
+                      echo "============ Push only ============"
+                      echo ""
                       push
                       ;;
-        --pull )      read -t 3 -p "=== Pull only mode ==="
+        --pull )      echo "============ Pull only ============"
+                      echo ""
                       pull
                       ;;
         -h | --help ) usage

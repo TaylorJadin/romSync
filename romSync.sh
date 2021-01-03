@@ -92,11 +92,11 @@ else
     while [ "$1" != "" ]; do
     case $1 in
         --push )      shift
-                      echo "============ Push only ============"
+                      echo "=============== Push ==============="
                       echo ""
                       push
                       ;;
-        --pull )      echo "============ Pull only ============"
+        --pull )      echo "=============== Pull ==============="
                       echo ""
                       pull
                       ;;

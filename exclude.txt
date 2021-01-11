@@ -1,10 +1,12 @@
 media
 gamelist*
 mame2003
-ports
-psx
 dreamcast
-segacd
-pcenginecd
+famicom
 nds
-famicon
+pcenginecd
+ports
+psp
+psx
+saturn
+segacd

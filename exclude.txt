@@ -1,6 +1,10 @@
 media
 gamelist*
-*.chd
-*.pbp
-*.nds
 mame2003
+ports
+psx
+dreamcast
+segacd
+pcenginecd
+nds
+famicon

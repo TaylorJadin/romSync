@@ -5,7 +5,7 @@ device1='piboy'
 device2='gpi'
 sync="rsync -rPt --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 mirror="rsync -rPt --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
-mirrorAll="rsync -rPt --del"
+backup="rsync -ahP --del"
 
 ### Functions ###
 
@@ -13,39 +13,27 @@ pull() {
   if ping -c 1 $device1 &> /dev/null
   then
     echo ""
-    echo "===================================="
-    echo "Syncing roms from $device1"
+    echo "✅ Syncing roms from $device1"
     $sync pi@$device1:/home/pi/RetroPie/roms/ /mnt/user/media/ROMs/
-    echo "===================================="
     echo ""
-    echo "===================================="
-    echo "Backing up configs from $device1"
-    $mirrorAll pi@$device1:/opt/retropie/configs/ /mnt/user/backups/$device1/configs
-    echo "===================================="
+    echo "✅ Backing up configs from $device1"
+    $backup pi@$device1:/opt/retropie/configs/ /mnt/user/backups/$device1/configs
     echo ""
-    echo "===================================="
-    echo "Backing up BIOS folder from $device1"
-    $mirrorAll pi@$device1:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device1/BIOS
-    echo "===================================="
+    echo "✅ Backing up BIOS folder from $device1"
+    $backup pi@$device1:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device1/BIOS
   fi
 
   if ping -c 1 $device2 &> /dev/null
   then
     echo ""
-    echo "===================================="
-    echo "Syncing roms from $device2"
+    echo "✅ Syncing roms from $device2"
     $sync pi@$device2:/home/pi/RetroPie/roms/ /mnt/user/media/ROMs/
-    echo "===================================="
     echo ""
-    echo "===================================="
-    echo "Backing up configs from $device2"
-    $mirrorAll pi@$device2:/opt/retropie/configs/ /mnt/user/backups/$device2/configs
-    echo "===================================="
+    echo "✅ Backing up configs from $device2"
+    $backup pi@$device2:/opt/retropie/configs/ /mnt/user/backups/$device2/configs
     echo ""
-    echo "===================================="
-    echo "Backing up BIOS folder from $device2"
-    $mirrorAll pi@$device2:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device2/BIOS
-    echo "===================================="
+    echo "✅ Backing up BIOS folder from $device2"
+    $backup pi@$device2:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device2/BIOS
   fi
 }
 
@@ -53,19 +41,15 @@ push() {
   if ping -c 1 $device1 &> /dev/null
   then
     echo ""
-    echo "===================================="
-    echo "Mirroring from unraid to $device1"
+    echo "✅ Mirroring from unraid to $device1"
     $mirror /mnt/user/media/ROMs/ pi@$device1:/home/pi/RetroPie/roms/
-    echo "===================================="
   fi
 
   if ping -c 1 $device2 &> /dev/null
   then
     echo ""
-    echo "===================================="
-    echo "Mirroring from unraid to $device2"
+    echo "✅ Mirroring from unraid to $device2"
     $mirror /mnt/user/media/ROMs/ pi@$device2:/home/pi/RetroPie/roms/
-    echo "===================================="
   fi
 }
 
@@ -92,11 +76,11 @@ else
     while [ "$1" != "" ]; do
     case $1 in
         --push )      shift
-                      echo "=============== Push ==============="
+                      echo "🔶 Push"
                       push
                       echo ""
                       ;;
-        --pull )      echo "=============== Pull ==============="
+        --pull )      echo "🔷 Pull"
                       pull
                       echo ""
                       ;;

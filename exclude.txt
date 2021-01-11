@@ -3,3 +3,4 @@ gamelist*
 *.chd
 *.pbp
 *.nds
+mame2003

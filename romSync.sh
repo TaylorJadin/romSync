@@ -18,9 +18,6 @@ pull() {
     echo ""
     echo "--> Backing up configs from $device1"
     $backup pi@$device1:/opt/retropie/configs/ /mnt/user/backups/$device1/configs
-    echo ""
-    echo "--> Backing up BIOS folder from $device1"
-    $backup pi@$device1:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device1/BIOS
   fi
 
   if ping -c 1 $device2 &> /dev/null
@@ -32,8 +29,6 @@ pull() {
     echo "--> Backing up configs from $device2"
     $backup pi@$device2:/opt/retropie/configs/ /mnt/user/backups/$device2/configs
     echo ""
-    echo "--> Backing up BIOS folder from $device2"
-    $backup pi@$device2:/home/pi/RetroPie/BIOS/ /mnt/user/backups/$device2/BIOS
   fi
 }
 

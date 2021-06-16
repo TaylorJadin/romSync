@@ -15,9 +15,6 @@ pull() {
     echo ""
     echo "--> Syncing roms from $device1"
     $sync pi@$device1:/home/pi/RetroPie/roms/ /mnt/user/media/ROMs/
-    echo ""
-    echo "--> Backing up configs from $device1"
-    $backup pi@$device1:/opt/retropie/configs/ /mnt/user/backups/$device1/configs
   fi
 
   if ping -c 1 $device2 &> /dev/null
@@ -25,10 +22,6 @@ pull() {
     echo ""
     echo "--> Syncing roms from $device2"
     $sync pi@$device2:/home/pi/RetroPie/roms/ /mnt/user/media/ROMs/
-    echo ""
-    echo "--> Backing up configs from $device2"
-    $backup pi@$device2:/opt/retropie/configs/ /mnt/user/backups/$device2/configs
-    echo ""
   fi
 }
 
@@ -50,7 +43,7 @@ push() {
 
 usage() {
    # Display Help
-   echo "Sync rom, bios, and config folders from retropie devices with my unraid shares."
+   echo "Sync ROMs and saves from retropie devices with my unraid shares."
    echo "Using no options will do a pull then a push to make sure all files are backed up"
    echo "and the same in all locations. If any of the retropie devices are unreachable"
    echo "it will skip those devices."

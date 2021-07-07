@@ -1,8 +1,11 @@
 #!/bin/bash
 
 ### Variables ###
-device1='piboy'
-device2='gpi'
+piboy='piboy'
+gpi='gpi'
+mister='mister.jadin.me'
+unraid_roms='/mnt/user/media/ROMs/'
+retropie_roms='/home/pi/RetroPie/roms/'
 sync="rsync -rPt --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 mirror="rsync -rPt --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 backup="rsync -ahP --del"
@@ -10,34 +13,48 @@ backup="rsync -ahP --del"
 ### Functions ###
 
 pull() {
-  if ping -c 1 $device1 &> /dev/null
+  if ping -c 1 $piboy &> /dev/null
   then
     echo ""
-    echo "--> Syncing roms from $device1"
-    $sync pi@$device1:/home/pi/RetroPie/roms/ /mnt/user/media/ROMs/
+    echo "--> Syncing roms from $piboy"
+    $sync pi@$piboy:$retropie_roms $unraid_roms
   fi
 
-  if ping -c 1 $device2 &> /dev/null
+  if ping -c 1 $gpi &> /dev/null
   then
     echo ""
-    echo "--> Syncing roms from $device2"
-    $sync pi@$device2:/home/pi/RetroPie/roms/ /mnt/user/media/ROMs/
+    echo "--> Syncing roms from $gpi"
+    $sync pi@$gpi:$retropie_roms $unraid_roms
+  fi
+
+  if ping -c 1 $mister &> /dev/null
+  then
+    echo ""
+    echo "--> Syncing roms from $mister"
+    $sync root@$mister:/media/fat/games/ATARI2600/ /mnt/user/media/ROMs/atari2600/
   fi
 }
 
 push() {
-  if ping -c 1 $device1 &> /dev/null
+  if ping -c 1 $piboy &> /dev/null
   then
     echo ""
-    echo "--> Mirroring from unraid to $device1"
-    $mirror /mnt/user/media/ROMs/ pi@$device1:/home/pi/RetroPie/roms/
+    echo "--> Mirroring from unraid to $piboy"
+    $mirror $unraid_roms pi@$piboy:$retropie_roms
   fi
 
-  if ping -c 1 $device2 &> /dev/null
+  if ping -c 1 $gpi &> /dev/null
   then
     echo ""
-    echo "--> Mirroring from unraid to $device2"
-    $mirror /mnt/user/media/ROMs/ pi@$device2:/home/pi/RetroPie/roms/
+    echo "--> Mirroring from unraid to $gpi"
+    $mirror $unraid_roms pi@$gpi:$retropie_roms
+  fi
+
+  if ping -c 1 $mister &> /dev/null
+  then
+    echo ""
+    echo "--> Mirroring from unraid to $mister"
+    $mirror /mnt/user/media/ROMs/atari2600/ root@$mister:/media/fat/games/ATARI2600/
   fi
 }
 

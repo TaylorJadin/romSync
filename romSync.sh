@@ -7,9 +7,8 @@ mister='mister.jadin.me'
 unraid_roms='/mnt/user/media/ROMs'
 retropie_roms='/home/pi/RetroPie/roms'
 mister_roms='/media/fat/games'
-sync="rsync -rPt --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+sync="rsync --update -rPt --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 mirror="rsync -rPt --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
-backup="rsync -ahP --del"
 
 ### Functions ###
 
@@ -86,7 +85,7 @@ push() {
 usage() {
    # Display Help
    echo "Sync ROMs and saves from retropie devices with my unraid shares."
-   echo "Using no options will do a pull then a push to make sure all files are backed up"
+   echo "Using no options will do a pull then a push to make sure all files are synced"
    echo "and the same in all locations. If any of the retropie devices are unreachable"
    echo "it will skip those devices."
    echo

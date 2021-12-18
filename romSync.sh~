@@ -87,8 +87,7 @@ push() {
     $mirror $unraid_roms/pcengine/ root@$mister:$mister_roms/TGFX16/
     echo "--> Mirroring saves,savestates,screenshots from unraid to $mister"
     $mirror $unraid_backups/MiSTerSD/saves/ root@$mister:$mister_sd/saves/
-    $mirror $unraid_backups/MiSTerSD/savestates/ root@$mister:$mister_sd/savestates/
-    $mirror $unraid_backups/MiSTerSD/screenshots/ root@$mister:$mister_sd/screenshots/
+    $mirror $unraid_backups/
   fi
 }
 

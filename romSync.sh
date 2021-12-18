@@ -3,7 +3,7 @@
 ### Variables ###
 piboy='piboy'
 gpi='gpi'
-mister='mister.jadin.me'
+mister='MiSTer'
 unraid_roms='/mnt/user/media/ROMs'
 retropie_roms='/home/pi/RetroPie/roms'
 mister_roms='/media/fat/games'

@@ -4,10 +4,8 @@
 piboy='piboy'
 gpi='gpi'
 mister='MiSTer'
-unraid_roms='/mnt/user/media/ROMs'
-unraid_backups='/mnt/user/backups'
-retropie_roms='/home/pi/RetroPie/roms'
-mister_roms='/media/fat/games'
+unraid_media='/mnt/user/media'
+retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
 sync="rsync --update -rPt --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 mirror="rsync -rPt --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
@@ -19,37 +17,34 @@ pull() {
   then
     echo ""
     echo "--> Syncing roms from $piboy"
-    $sync pi@$piboy:$retropie_roms/ $unraid_roms/
+    $sync pi@$piboy:$retropie_home/roms/ $unraid_media/roms/
+    echo ""
+    echo "--> Syncing saves from $piboy"
+    $sync pi@$piboy:$retropie_home/saves/ $unraid_media/Saves/retroarch/saves/
+    $sync pi@$piboy:$retropie_home/savestates/ $unraid_media/Saves/retroarch/savestates/
+    $sync pi@$piboy:$retropie_home/screenshots/ $unraid_media/Saves/retroarch/screenshots/
   fi
 
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
-    echo "--> Syncing roms from $gpi"
-    $sync pi@$gpi:$retropie_roms/ $unraid_roms/
+    echo ""
+    echo "--> Syncing saves from $gpi"
+    $sync pi@$gpi:$retropie_home/saves/ $unraid_media/Saves/retroarch/saves/
+    $sync pi@$gpi:$retropie_home/savestates/ $unraid_media/Saves/retroarch/savestates/
+    $sync pi@$gpi:$retropie_home/screenshots/ $unraid_media/Saves/retroarch/screenshots/
   fi
 
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
     echo "--> Syncing roms from $mister"
-    $sync root@$mister:$mister_roms/ATARI2600/ $unraid_roms/atari2600/
-    $sync root@$mister:$mister_roms/ATARI5200/ $unraid_roms/atari5200/
-    $sync root@$mister:$mister_roms/ATARI7800/ $unraid_roms/atari7800/
-    $sync root@$mister:$mister_roms/AtariLynx/ $unraid_roms/atarilynx/
-    $sync root@$mister:$mister_roms/GAMEBOY/GB/ $unraid_roms/gb/
-    $sync root@$mister:$mister_roms/GAMEBOY/GBC/ $unraid_roms/gbc/
-    $sync root@$mister:$mister_roms/GBA/ $unraid_roms/gba/
-    $sync root@$mister:$mister_roms/Genesis/ $unraid_roms/megadrive/
-    $sync root@$mister:$mister_roms/NeoGeo/ $unraid_roms/neogeo/
-    $sync root@$mister:$mister_roms/NES/ $unraid_roms/nes/
-    $sync root@$mister:$mister_roms/SMS/ $unraid_roms/mastersystem/
-    $sync root@$mister:$mister_roms/SNES/ $unraid_roms/snes/
-    $sync root@$mister:$mister_roms/TGFX16/ $unraid_roms/pcengine/
-    echo "--> Syncing saves,savestates,and screenshots from $mister"
-    $sync root@$mister:$mister_sd/saves/ $unraid_backups/MiSTerSD/saves/
-    $sync root@$mister:$mister_sd/savestates/ $unraid_backups/MiSTerSD/savestates
-    $sync root@$mister:$mister_sd/screenshots/ $unraid_backups/MiSTerSD/screenshots
+    $sync root@$mister:$mister_sd/unraid_roms/ $unraid_media/roms/
+    echo ""
+    echo "--> Syncing saves from $mister"
+    $sync root@$mister:$mister_sd/saves/ $unraid_media/Saves/mister/saves/
+    $sync root@$mister:$mister_sd/savestates/ $unraid_media/Saves/mister/savestates
+    $sync root@$mister:$mister_sd/screenshots/ $unraid_media/Saves/mister/screenshots
   fi
 }
 
@@ -58,37 +53,36 @@ push() {
   then
     echo ""
     echo "--> Mirroring from unraid to $piboy"
-    $mirror $unraid_roms/ pi@$piboy:$retropie_roms/
+    $mirror $unraid_media/roms/ pi@$piboy:$retropie_home/roms/
+    echo ""
+    echo "--> Syncing saves from $piboy"
+    $mirror $unraid_media/Saves/retroarch/saves/ pi@$piboy:$retropie_home/saves/
+    $mirror $unraid_media/Saves/retroarch/savestates/ pi@$piboy:$retropie_home/savestates/
+    $mirror $unraid_media/Saves/retroarch/screenshots/ pi@$piboy:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
     echo "--> Mirroring from unraid to $gpi"
-    $mirror $unraid_roms/ pi@$gpi:$retropie_roms/
+    $mirror $unraid_media/roms/ pi@$gpi:$retropie_home/roms/
+    echo ""
+    echo "--> Syncing saves from $gpi"
+    $mirror $unraid_media/Saves/retroarch/saves/ pi@$gpi:$retropie_home/saves/
+    $mirror $unraid_media/Saves/retroarch/savestates/ pi@$gpi:$retropie_home/savestates/
+    $mirror $unraid_media/Saves/retroarch/screenshots/ pi@$gpi:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
     echo "--> Mirroring from unraid to $mister"
-    $mirror $unraid_roms/atari2600/ root@$mister:$mister_roms/ATARI2600/
-    $mirror $unraid_roms/atari5200/ root@$mister:$mister_roms/ATARI5200/
-    $mirror $unraid_roms/atari7800/ root@$mister:$mister_roms/ATARI7800/
-    $mirror $unraid_roms/atarilynx/ root@$mister:$mister_roms/AtariLynx/
-    $mirror $unraid_roms/gb/ root@$mister:$mister_roms/GAMEBOY/GB/
-    $mirror $unraid_roms/gbc/ root@$mister:$mister_roms/GAMEBOY/GBC/
-    $mirror $unraid_roms/gba/ root@$mister:$mister_roms/GBA/
-    $mirror $unraid_roms/megadrive/ root@$mister:$mister_roms/Genesis/
-    $mirror $unraid_roms/neogeo/ root@$mister:$mister_roms/NeoGeo/
-    $mirror $unraid_roms/nes/ root@$mister:$mister_roms/NES/
-    $mirror $unraid_roms/mastersystem/ root@$mister:$mister_roms/SMS/
-    $mirror $unraid_roms/snes/ root@$mister:$mister_roms/SNES/
-    $mirror $unraid_roms/pcengine/ root@$mister:$mister_roms/TGFX16/
-    echo "--> Mirroring saves,savestates,screenshots from unraid to $mister"
-    $mirror $unraid_backups/MiSTerSD/saves/ root@$mister:$mister_sd/saves/
-    $mirror $unraid_backups/MiSTerSD/savestates/ root@$mister:$mister_sd/savestates/
-    $mirror $unraid_backups/MiSTerSD/screenshots/ root@$mister:$mister_sd/screenshots/
+    $mirror $unraid_media/roms/ root@$mister:$mister_sd/unraid_roms/
+    echo ""
+    echo "--> Mirroring saves from unraid to $mister"
+    $mirror $unraid_media/Saves/mister/saves/ root@$mister:$mister_sd/saves/
+    $mirror $unraid_media/Saves/mister/savestates/ root@$mister:$mister_sd/savestates/
+    $mirror $unraid_media/Saves/mister/screenshots/ root@$mister:$mister_sd/screenshots/
   fi
 }
 

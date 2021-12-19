@@ -10,3 +10,4 @@ psp
 psx
 saturn
 segacd
+steam

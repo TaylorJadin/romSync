@@ -91,7 +91,7 @@ usage() {
    # Display Help
    echo "Sync ROMs and saves from retropie devices with my unraid shares."
    echo "Using no options will do a pull then a push to make sure all files are synced"
-   echo "and the same in all locations. If any of the retropie devices are unreachable"
+   echo "and the same in all locations. If any of the devices are unreachable"
    echo "it will skip those devices."
    echo
    echo "Syntax: romSync [--push | --pull | --help]"

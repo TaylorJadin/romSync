@@ -20,18 +20,20 @@ pull() {
     $sync pi@$piboy:$retropie_home/roms/ $unraid_games/roms/
     echo ""
     echo "--> Syncing saves and screenshots from $piboy"
-    $sync pi@$piboy:$retropie_home/saves/ $unraid_games/retroarch/saves/
-    $sync pi@$piboy:$retropie_home/savestates/ $unraid_games/retroarch/savestates/
-    $sync pi@$piboy:$retropie_home/screenshots/ $unraid_games/retroarch/screenshots/
+    $sync pi@$piboy:$retropie_home/saves/ $unraid_games/piboy/saves/
+    $sync pi@$piboy:$retropie_home/savestates/ $unraid_games/piboy/savestates/
+    $sync pi@$piboy:$retropie_home/screenshots/ $unraid_games/piboy/screenshots/
   fi
 
   if ping -c 1 $gpi &> /dev/null
   then
+    echo "--> Syncing roms from $gpi"
+    $sync pi@$gpi:$retropie_home/roms/ $unraid_games/roms/
     echo ""
     echo "--> Syncing saves and screenshots from $gpi"
-    $sync pi@$gpi:$retropie_home/saves/ $unraid_games/retroarch/saves/
-    $sync pi@$gpi:$retropie_home/savestates/ $unraid_games/retroarch/savestates/
-    $sync pi@$gpi:$retropie_home/screenshots/ $unraid_games/retroarch/screenshots/
+    $sync pi@$gpi:$retropie_home/saves/ $unraid_games/gpi/saves/
+    $sync pi@$gpi:$retropie_home/savestates/ $unraid_games/gpi/savestates/
+    $sync pi@$gpi:$retropie_home/screenshots/ $unraid_games/gpi/screenshots/
   fi
 
   if ping -c 1 $mister &> /dev/null
@@ -55,9 +57,9 @@ push() {
     $mirror $unraid_games/roms/ pi@$piboy:$retropie_home/roms/
     echo ""
     echo "--> Syncing saves and screenshots from $piboy"
-    $mirror $unraid_games/retroarch/saves/ pi@$piboy:$retropie_home/saves/
-    $mirror $unraid_games/retroarch/savestates/ pi@$piboy:$retropie_home/savestates/
-    $mirror $unraid_games/retroarch/screenshots/ pi@$piboy:$retropie_home/screenshots/
+    $mirror $unraid_games/piboy/saves/ pi@$piboy:$retropie_home/saves/
+    $mirror $unraid_games/piboy/savestates/ pi@$piboy:$retropie_home/savestates/
+    $mirror $unraid_games/piboy/screenshots/ pi@$piboy:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $gpi &> /dev/null
@@ -67,9 +69,9 @@ push() {
     $mirror $unraid_games/roms/ pi@$gpi:$retropie_home/roms/
     echo ""
     echo "--> Syncing saves and screenshots from $gpi"
-    $mirror $unraid_games/retroarch/saves/ pi@$gpi:$retropie_home/saves/
-    $mirror $unraid_games/retroarch/savestates/ pi@$gpi:$retropie_home/savestates/
-    $mirror $unraid_games/retroarch/screenshots/ pi@$gpi:$retropie_home/screenshots/
+    $mirror $unraid_games/gpi/saves/ pi@$gpi:$retropie_home/saves/
+    $mirror $unraid_games/gpi/savestates/ pi@$gpi:$retropie_home/savestates/
+    $mirror $unraid_games/gpi/screenshots/ pi@$gpi:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $mister &> /dev/null

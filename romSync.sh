@@ -96,26 +96,26 @@ usage() {
 
 ### Main ###
 if [ "$1" = "" ]; then
-    pull
-    push
+  pull
+  push
 else
-    while [ "$1" != "" ]; do
-    case $1 in
-        --push )      shift
-                      echo "--> Push"
-                      push
-                      echo ""
-                      ;;
-        --pull )      echo "--> Pull"
-                      pull
-                      echo ""
-                      ;;
-        -h | --help ) usage
-                      exit
-                      ;;
-        * )           usage
-                      exit 1
-    esac
-    shift
+  while [ "$1" != "" ]; do
+  case $1 in
+    --push )      shift
+                  echo "--> Push"
+                  push
+                  echo ""
+                  ;;
+    --pull )      echo "--> Pull"
+                  pull
+                  echo ""
+                  ;;
+    -h | --help ) usage
+                  exit
+                  ;;
+    * )           usage
+                  exit 1
+  esac
+  shift
 done
 fi

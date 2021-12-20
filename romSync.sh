@@ -7,8 +7,10 @@ mister='MiSTer'
 unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
-sync="rsync -rti --update --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
-mirror="rsync -rti --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+sync="rsync -rti --update"
+mirror="rsync -rti --del"
+mirror_roms="rsync -rti --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+sync="rsync -rti --update"
 
 ### Functions ###
 
@@ -45,8 +47,8 @@ push() {
   if ping -c 1 $piboy &> /dev/null
   then
     echo ""
-    echo "--> Mirroring from unraid to $piboy"
-    $mirror $unraid_games/roms/ pi@$piboy:$retropie_home/roms/
+    echo "--> Mirroring roms from unraid to $piboy"
+    $mirror_roms $unraid_games/roms/ pi@$piboy:$retropie_home/roms/
     echo ""
     echo "--> Mirroing saves and screenshots to $piboy"
     $mirror $unraid_games/retroarch/saves/ pi@$piboy:$retropie_home/saves/
@@ -57,8 +59,8 @@ push() {
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
-    echo "--> Mirroring from unraid to $gpi"
-    $mirror $unraid_games/roms/ pi@$gpi:$retropie_home/roms/
+    echo "--> Mirroring roms from unraid to $gpi"
+    $mirror_roms $unraid_games/roms/ pi@$gpi:$retropie_home/roms/
     echo ""
     echo "--> Mirroing saves and screenshots to $gpi"
     $mirror $unraid_games/retroarch/saves/ pi@$gpi:$retropie_home/saves/
@@ -69,8 +71,20 @@ push() {
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
-    echo "--> Mirroring from unraid to $mister"
-    $mirror $unraid_games/roms/ root@$mister:$mister_sd/unraid_roms/
+    echo "--> Syncing roms from unraid to $mister"
+    $sync $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
+    $sync $unraid_games/roms/atarilynx root@$mister:$mister_sd/games/AtariLynx
+    $sync $unraid_games/roms/gamegear root@$mister:$mister_sd/games/SMS/gamegear
+    $sync $unraid_games/roms/gb root@$mister:$mister_sd/games/GAMEBOY/gb
+    $sync $unraid_games/roms/gbc root@$mister:$mister_sd/games/GAMEBOY/gbc
+    $sync $unraid_games/roms/gba root@$mister:$mister_sd/games/GBA
+    $sync $unraid_games/roms/megadrive root@$mister:$mister_sd/games/Genesis
+    $sync $unraid_games/roms/nes root@$mister:$mister_sd/games/NES
+    $sync $unraid_games/roms/pcengine root@$mister:$mister_sd/games/TGFX16
+    $sync $unraid_games/roms/pcenginecd root@$mister:$mister_sd/games/TGFX16-CD
+    $sync $unraid_games/roms/segacd root@$mister:$mister_sd/games/MegaCD
+    $sync $unraid_games/roms/snes root@$mister:$mister_sd/games/SNES
+    
     echo ""
     echo "--> Mirroring saves and screenshots to $mister"
     $mirror $unraid_games/mister/saves/ root@$mister:$mister_sd/saves/

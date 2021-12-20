@@ -73,17 +73,17 @@ push() {
     echo ""
     echo "--> Syncing roms from unraid to $mister"
     $sync $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
-    $sync $unraid_games/roms/atarilynx root@$mister:$mister_sd/games/AtariLynx
-    $sync $unraid_games/roms/gamegear root@$mister:$mister_sd/games/SMS/gamegear
-    $sync $unraid_games/roms/gb root@$mister:$mister_sd/games/GAMEBOY/gb
-    $sync $unraid_games/roms/gbc root@$mister:$mister_sd/games/GAMEBOY/gbc
-    $sync $unraid_games/roms/gba root@$mister:$mister_sd/games/GBA
-    $sync $unraid_games/roms/megadrive root@$mister:$mister_sd/games/Genesis
-    $sync $unraid_games/roms/nes root@$mister:$mister_sd/games/NES
-    $sync $unraid_games/roms/pcengine root@$mister:$mister_sd/games/TGFX16
-    $sync $unraid_games/roms/pcenginecd root@$mister:$mister_sd/games/TGFX16-CD
-    $sync $unraid_games/roms/segacd root@$mister:$mister_sd/games/MegaCD
-    $sync $unraid_games/roms/snes root@$mister:$mister_sd/games/SNES
+    $sync $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
+    $sync $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
+    $sync $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/gb/
+    $sync $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GAMEBOY/gbc/
+    $sync $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
+    $sync $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/
+    $sync $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
+    $sync $unraid_games/roms/pcengine/ root@$mister:$mister_sd/games/TGFX16/
+    $sync $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/
+    $sync $unraid_games/roms/segacd/ root@$mister:$mister_sd/games/MegaCD/
+    $sync $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
     
     echo ""
     echo "--> Mirroring saves and screenshots to $mister"

@@ -14,7 +14,7 @@ sync="rsync -rti --update"
 
 ### Functions ###
 
-pull() {
+saves() {
   if ping -c 1 $piboy &> /dev/null
   then
     echo ""
@@ -22,6 +22,11 @@ pull() {
     $sync pi@$piboy:$retropie_home/saves/ $unraid_games/retroarch/saves/
     $sync pi@$piboy:$retropie_home/savestates/ $unraid_games/retroarch/savestates/
     $sync pi@$piboy:$retropie_home/screenshots/ $unraid_games/retroarch/screenshots/
+    echo ""
+    echo "--> Mirroing saves and screenshots back to $piboy"
+    $mirror $unraid_games/retroarch/saves/ pi@$piboy:$retropie_home/saves/
+    $mirror $unraid_games/retroarch/savestates/ pi@$piboy:$retropie_home/savestates/
+    $mirror $unraid_games/retroarch/screenshots/ pi@$piboy:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $gpi &> /dev/null
@@ -31,6 +36,11 @@ pull() {
     $sync pi@$gpi:$retropie_home/saves/ $unraid_games/retroarch/saves/
     $sync pi@$gpi:$retropie_home/savestates/ $unraid_games/retroarch/savestates/
     $sync pi@$gpi:$retropie_home/screenshots/ $unraid_games/retroarch/screenshots/
+    echo ""
+    echo "--> Mirroing saves and screenshots back to $gpi"
+    $mirror $unraid_games/retroarch/saves/ pi@$gpi:$retropie_home/saves/
+    $mirror $unraid_games/retroarch/savestates/ pi@$gpi:$retropie_home/savestates/
+    $mirror $unraid_games/retroarch/screenshots/ pi@$gpi:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $mister &> /dev/null
@@ -40,20 +50,20 @@ pull() {
     $sync root@$mister:$mister_sd/saves/ $unraid_games/mister/saves/
     $sync root@$mister:$mister_sd/savestates/ $unraid_games/mister/savestates
     $sync root@$mister:$mister_sd/screenshots/ $unraid_games/mister/screenshots
+    echo ""
+    echo "--> Mirroring saves and screenshots back to $mister"
+    $mirror $unraid_games/mister/saves/ root@$mister:$mister_sd/saves/
+    $mirror $unraid_games/mister/savestates/ root@$mister:$mister_sd/savestates/
+    $mirror $unraid_games/mister/screenshots/ root@$mister:$mister_sd/screenshots/
   fi
 }
 
-push() {
+roms() {
   if ping -c 1 $piboy &> /dev/null
   then
     echo ""
     echo "--> Mirroring roms from unraid to $piboy"
     $mirror_roms $unraid_games/roms/ pi@$piboy:$retropie_home/roms/
-    echo ""
-    echo "--> Mirroing saves and screenshots to $piboy"
-    $mirror $unraid_games/retroarch/saves/ pi@$piboy:$retropie_home/saves/
-    $mirror $unraid_games/retroarch/savestates/ pi@$piboy:$retropie_home/savestates/
-    $mirror $unraid_games/retroarch/screenshots/ pi@$piboy:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $gpi &> /dev/null
@@ -61,11 +71,6 @@ push() {
     echo ""
     echo "--> Mirroring roms from unraid to $gpi"
     $mirror_roms $unraid_games/roms/ pi@$gpi:$retropie_home/roms/
-    echo ""
-    echo "--> Mirroing saves and screenshots to $gpi"
-    $mirror $unraid_games/retroarch/saves/ pi@$gpi:$retropie_home/saves/
-    $mirror $unraid_games/retroarch/savestates/ pi@$gpi:$retropie_home/savestates/
-    $mirror $unraid_games/retroarch/screenshots/ pi@$gpi:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $mister &> /dev/null
@@ -84,12 +89,6 @@ push() {
     $sync $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/
     $sync $unraid_games/roms/segacd/ root@$mister:$mister_sd/games/MegaCD/
     $sync $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
-    
-    echo ""
-    echo "--> Mirroring saves and screenshots to $mister"
-    $mirror $unraid_games/mister/saves/ root@$mister:$mister_sd/saves/
-    $mirror $unraid_games/mister/savestates/ root@$mister:$mister_sd/savestates/
-    $mirror $unraid_games/mister/screenshots/ root@$mister:$mister_sd/screenshots/
   fi
 }
 
@@ -100,28 +99,28 @@ usage() {
    echo "and the same in all locations. If any of the devices are unreachable"
    echo "it will skip those devices."
    echo
-   echo "Syntax: romSync [--push | --pull | --help]"
+   echo "Syntax: romSync [--saves | --roms | --help]"
    echo "options:"
-   echo "pull     Sync roms, bios, and config folders from devices to unraid"
-   echo "push     Mirrors roms folder from unraid to devices"
+   echo "saves    Sync saves and screenshots folders from devices to unraid and back"
+   echo "roms     Mirrors roms folder from unraid to devices"
    echo "help     Print this help"
    echo
 }
 
 ### Main ###
 if [ "$1" = "" ]; then
-  pull
-  push
+  saves
+  roms
 else
   while [ "$1" != "" ]; do
   case $1 in
-    --push )      shift
-                  echo "--> Push"
-                  push
+    --saves )      shift
+                  echo "--> Saves"
+                  saves
                   echo ""
                   ;;
-    --pull )      echo "--> Pull"
-                  pull
+    --roms )      echo "--> ROMs"
+                  roms
                   echo ""
                   ;;
     -h | --help ) usage

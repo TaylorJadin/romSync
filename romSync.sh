@@ -2,7 +2,7 @@
 
 ### Variables ###
 piboy='piboy'
-gpi='gpi'
+gpi='gpi2'
 mister='MiSTer'
 unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'

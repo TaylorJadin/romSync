@@ -9,7 +9,7 @@ retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
 sync="rsync -rti --update"
 mirror="rsync -rti --del"
-mirror_mister_roms="rsync -ri --del --exclude '*.rom'"
+mirror_mister_roms="rsync -ri --ignore-existing"
 mirror_exclude="rsync -rti --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 sync="rsync -rti --update"
 

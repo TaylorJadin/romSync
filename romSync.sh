@@ -63,7 +63,7 @@ roms() {
     echo "--> Mirroring roms from unraid to $piboy"
     $mirror $unraid_games/roms/atari2600 pi@$piboy:$retropie_home/roms/atari2600
     $mirror $unraid_games/roms/atarilynx pi@$piboy:$retropie_home/roms/atarilynx
-    $mirror $unraid_games/roms/famicon pi@$piboy:$retropie_home/roms/famicon
+    $mirror $unraid_games/roms/famicom pi@$piboy:$retropie_home/roms/famicom
     $mirror $unraid_games/roms/fba pi@$piboy:$retropie_home/roms/fba
     $mirror $unraid_games/roms/gamegear pi@$piboy:$retropie_home/roms/gamegear
     $mirror $unraid_games/roms/gb pi@$piboy:$retropie_home/roms/gb
@@ -87,7 +87,7 @@ roms() {
     echo "--> Mirroring roms from unraid to $gpi"
     $mirror $unraid_games/roms/atari2600 pi@$gpi:$retropie_home/roms/atari2600
     $mirror $unraid_games/roms/atarilynx pi@$gpi:$retropie_home/roms/atarilynx
-    $mirror $unraid_games/roms/famicon pi@$gpi:$retropie_home/roms/famicon
+    $mirror $unraid_games/roms/famicom pi@$gpi:$retropie_home/roms/famicom
     $mirror $unraid_games/roms/fba pi@$gpi:$retropie_home/roms/fba
     $mirror $unraid_games/roms/gamegear pi@$gpi:$retropie_home/roms/gamegear
     $mirror $unraid_games/roms/gb pi@$gpi:$retropie_home/roms/gb

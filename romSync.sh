@@ -8,10 +8,7 @@ unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
 sync="rsync -rti --update"
-mirror="rsync -rti --del"
-mirror_mister_roms="rsync -ri --ignore-existing"
-mirror_exclude="rsync -rti --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
-sync="rsync -rti --update"
+mirror="rsync -rti --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 
@@ -64,32 +61,66 @@ roms() {
   then
     echo ""
     echo "--> Mirroring roms from unraid to $piboy"
-    $mirror_exclude $unraid_games/roms/ pi@$piboy:$retropie_home/roms/
+    $mirror $unraid_games/roms/atari2600 pi@$piboy:$retropie_home/roms/atari2600
+    $mirror $unraid_games/roms/atarilynx pi@$piboy:$retropie_home/roms/atarilynx
+    $mirror $unraid_games/roms/famicon pi@$piboy:$retropie_home/roms/famicon
+    $mirror $unraid_games/roms/fba pi@$piboy:$retropie_home/roms/fba
+    $mirror $unraid_games/roms/gamegear pi@$piboy:$retropie_home/roms/gamegear
+    $mirror $unraid_games/roms/gb pi@$piboy:$retropie_home/roms/gb
+    $mirror $unraid_games/roms/gba pi@$piboy:$retropie_home/roms/gba
+    $mirror $unraid_games/roms/gbc pi@$piboy:$retropie_home/roms/gbc
+    $mirror $unraid_games/roms/mame-libreto pi@$piboy:$retropie_home/roms/mame-libreto
+    $mirror $unraid_games/roms/mastersystem pi@$piboy:$retropie_home/roms/mastersystem
+    $mirror $unraid_games/roms/megadrive pi@$piboy:$retropie_home/roms/megadrive
+    $mirror $unraid_games/roms/n64 pi@$piboy:$retropie_home/roms/n64
+    $mirror $unraid_games/roms/neogeo pi@$piboy:$retropie_home/roms/neogeo
+    $mirror $unraid_games/roms/nes pi@$piboy:$retropie_home/roms/nes
+    $mirror $unraid_games/roms/ngpc pi@$piboy:$retropie_home/roms/ngpc
+    $mirror $unraid_games/roms/pcengine pi@$piboy:$retropie_home/roms/pcengine
+    $mirror $unraid_games/roms/sega32x pi@$piboy:$retropie_home/roms/sega32x
+    $mirror $unraid_games/roms/snes pi@$piboy:$retropie_home/roms/snes
   fi
 
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
     echo "--> Mirroring roms from unraid to $gpi"
-    $mirror_exclude $unraid_games/roms/ pi@$gpi:$retropie_home/roms/
+    $mirror $unraid_games/roms/atari2600 pi@$gpi:$retropie_home/roms/atari2600
+    $mirror $unraid_games/roms/atarilynx pi@$gpi:$retropie_home/roms/atarilynx
+    $mirror $unraid_games/roms/famicon pi@$gpi:$retropie_home/roms/famicon
+    $mirror $unraid_games/roms/fba pi@$gpi:$retropie_home/roms/fba
+    $mirror $unraid_games/roms/gamegear pi@$gpi:$retropie_home/roms/gamegear
+    $mirror $unraid_games/roms/gb pi@$gpi:$retropie_home/roms/gb
+    $mirror $unraid_games/roms/gba pi@$gpi:$retropie_home/roms/gba
+    $mirror $unraid_games/roms/gbc pi@$gpi:$retropie_home/roms/gbc
+    $mirror $unraid_games/roms/mame-libreto pi@$gpi:$retropie_home/roms/mame-libreto
+    $mirror $unraid_games/roms/mastersystem pi@$gpi:$retropie_home/roms/mastersystem
+    $mirror $unraid_games/roms/megadrive pi@$gpi:$retropie_home/roms/megadrive
+    $mirror $unraid_games/roms/n64 pi@$gpi:$retropie_home/roms/n64
+    $mirror $unraid_games/roms/neogeo pi@$gpi:$retropie_home/roms/neogeo
+    $mirror $unraid_games/roms/nes pi@$gpi:$retropie_home/roms/nes
+    $mirror $unraid_games/roms/ngpc pi@$gpi:$retropie_home/roms/ngpc
+    $mirror $unraid_games/roms/pcengine pi@$gpi:$retropie_home/roms/pcengine
+    $mirror $unraid_games/roms/sega32x pi@$gpi:$retropie_home/roms/sega32x
+    $mirror $unraid_games/roms/snes pi@$gpi:$retropie_home/roms/snes
   fi
 
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
     echo "--> Mirroring roms from unraid to $mister"
-    $mirror_mister_roms $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
-    $mirror_mister_roms $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
-    $mirror_mister_roms $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
-    $mirror_mister_roms $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/gb/
-    $mirror_mister_roms $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GAMEBOY/gbc/
-    $mirror_mister_roms $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
-    $mirror_mister_roms $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/
-    $mirror_mister_roms $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
-    $mirror_mister_roms $unraid_games/roms/pcengine/ root@$mister:$mister_sd/games/TGFX16/
-    $mirror_mister_roms $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/
-    $mirror_mister_roms $unraid_games/roms/segacd/ root@$mister:$mister_sd/games/MegaCD/
-    $mirror_mister_roms $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
+    $mirror $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
+    $mirror $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
+    $mirror $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
+    $mirror $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/gb/
+    $mirror $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GAMEBOY/gbc/
+    $mirror $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
+    $mirror $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/
+    $mirror $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
+    $mirror $unraid_games/roms/pcengine/ root@$mister:$mister_sd/games/TGFX16/
+    $mirror $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/
+    $mirror $unraid_games/roms/segacd/ root@$mister:$mister_sd/games/MegaCD/
+    $mirror $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
   fi
 }
 

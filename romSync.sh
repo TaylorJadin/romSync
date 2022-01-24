@@ -69,7 +69,7 @@ roms() {
     $mirror $unraid_games/roms/gb/ pi@$piboy:$retropie_home/roms/gb/
     $mirror $unraid_games/roms/gba/ pi@$piboy:$retropie_home/roms/gba/
     $mirror $unraid_games/roms/gbc/ pi@$piboy:$retropie_home/roms/gbc/
-    $mirror $unraid_games/roms/mame-libreto/ pi@$piboy:$retropie_home/roms/mame-libreto/
+    $mirror $unraid_games/roms/mame-libretro/ pi@$piboy:$retropie_home/roms/mame-libretro/
     $mirror $unraid_games/roms/mastersystem/ pi@$piboy:$retropie_home/roms/mastersystem/
     $mirror $unraid_games/roms/megadrive/ pi@$piboy:$retropie_home/roms/megadrive/
     $mirror $unraid_games/roms/n64/ pi@$piboy:$retropie_home/roms/n64/
@@ -93,7 +93,7 @@ roms() {
     $mirror $unraid_games/roms/gb/ pi@$gpi:$retropie_home/roms/gb/
     $mirror $unraid_games/roms/gba/ pi@$gpi:$retropie_home/roms/gba/
     $mirror $unraid_games/roms/gbc/ pi@$gpi:$retropie_home/roms/gbc/
-    $mirror $unraid_games/roms/mame-libreto/ pi@$gpi:$retropie_home/roms/mame-libreto/
+    $mirror $unraid_games/roms/mame-libretro/ pi@$gpi:$retropie_home/roms/mame-libretro/
     $mirror $unraid_games/roms/mastersystem/ pi@$gpi:$retropie_home/roms/mastersystem/
     $mirror $unraid_games/roms/megadrive/ pi@$gpi:$retropie_home/roms/megadrive/
     $mirror $unraid_games/roms/neogeo/ pi@$gpi:$retropie_home/roms/neogeo/

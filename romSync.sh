@@ -7,8 +7,8 @@ mister='MiSTer'
 unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
-sync="rsync -rti --update"
-mirror="rsync -rti --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+sync="rsync -rtiu"
+mirror="rsync -rIi --del --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 
@@ -117,7 +117,7 @@ roms() {
     $mirror $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/
     $mirror $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
     $mirror $unraid_games/roms/pcengine/ root@$mister:$mister_sd/games/TGFX16/
-    $mirror $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/
+   # $mirror $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/
     $mirror $unraid_games/roms/segacd/ root@$mister:$mister_sd/games/MegaCD/
     $mirror $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
   fi

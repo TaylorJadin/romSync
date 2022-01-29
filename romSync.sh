@@ -115,6 +115,7 @@ roms() {
     $mirror $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GAMEBOY/gbc/
     $mirror $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
     $mirror $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/
+    $mirror $unraid_games/roms/neogeo_mister/ root@$mister:$mister_sd/games/NEOGEO/
     $mirror $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
     $mirror $unraid_games/roms/pcengine/ root@$mister:$mister_sd/games/TGFX16/
     $mirror $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/

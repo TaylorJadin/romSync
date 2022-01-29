@@ -8,7 +8,7 @@ unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
 sync="rsync -ri --times --update"
-mirror="rsync -ri --del --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+mirror="rsync -ri --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 

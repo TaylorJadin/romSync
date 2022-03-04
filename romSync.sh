@@ -96,6 +96,7 @@ roms() {
     $mirror $unraid_games/roms/mame-libretro/ pi@$gpi:$retropie_home/roms/mame-libretro/
     $mirror $unraid_games/roms/mastersystem/ pi@$gpi:$retropie_home/roms/mastersystem/
     $mirror $unraid_games/roms/megadrive/ pi@$gpi:$retropie_home/roms/megadrive/
+    $mirror $unraid_games/roms/n64/ pi@$gpi:$retropie_home/roms/n64/
     $mirror $unraid_games/roms/neogeo/ pi@$gpi:$retropie_home/roms/neogeo/
     $mirror $unraid_games/roms/nes/ pi@$gpi:$retropie_home/roms/nes/
     $mirror $unraid_games/roms/ngpc/ pi@$gpi:$retropie_home/roms/ngpc/

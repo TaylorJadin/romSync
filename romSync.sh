@@ -109,12 +109,17 @@ roms() {
   then
     echo ""
     echo "--> Mirroring roms from unraid to $mister"
+    $mirror $unraid_games/roms/atari800/ root@$mister:$mister_sd/games/ATARI800/
     $mirror $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
+    $mirror $unraid_games/roms/atari5200/ root@$mister:$mister_sd/games/ATARI5200/
+    $mirror $unraid_games/roms/atari7800/ root@$mister:$mister_sd/games/ATARI7800/
     $mirror $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
     $mirror $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
     $mirror $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/gb/
     $mirror $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GAMEBOY/gbc/
-    $mirror $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
+    $mirror $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/\
+    $mirror $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/
+    $mirror $unraid_games/roms/macplus/ root@$mister:$mister_sd/games/MACPLUS/
     $mirror $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/
     $mirror $unraid_games/roms/neogeo_mister/ root@$mister:$mister_sd/games/NEOGEO/
     $mirror $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/

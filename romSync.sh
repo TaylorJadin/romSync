@@ -117,7 +117,7 @@ roms() {
     $mirror $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
     $mirror $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/gb/
     $mirror $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GAMEBOY/gbc/
-    $mirror $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/\
+    $mirror $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
     $mirror $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/
     $mirror $unraid_games/roms/macplus/ root@$mister:$mister_sd/games/MACPLUS/
     $mirror $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/

@@ -1,4 +1,0 @@
-media
-gamelist*
-mame2003
-*.rom

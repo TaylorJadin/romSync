@@ -71,9 +71,9 @@ roms() {
     $rom_copy $unraid_games/roms/famicom/ pi@$piboy:$retropie_home/roms/famicom/
     $rom_copy $unraid_games/roms/fba/ pi@$piboy:$retropie_home/roms/fba/
     $rom_copy $unraid_games/roms/gamegear/ pi@$piboy:$retropie_home/roms/gamegear/
-    $rom_copy $unraid_games/roms/gb/ pi@$piboy:$retropie_home/roms/gb/
+    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy/ pi@$piboy:$retropie_home/roms/gb/
+    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy\ Color/ pi@$piboy:$retropie_home/roms/gbc/
     $rom_copy $unraid_games/roms/gba/ pi@$piboy:$retropie_home/roms/gba/
-    $rom_copy $unraid_games/roms/gbc/ pi@$piboy:$retropie_home/roms/gbc/
     $rom_copy $unraid_games/roms/mame-libretro/ pi@$piboy:$retropie_home/roms/mame-libretro/
     $rom_copy $unraid_games/roms/mastersystem/ pi@$piboy:$retropie_home/roms/mastersystem/
     $rom_copy $unraid_games/roms/megadrive/ pi@$piboy:$retropie_home/roms/megadrive/
@@ -96,9 +96,9 @@ roms() {
     $rom_copy $unraid_games/roms/famicom/ pi@$gpi:$retropie_home/roms/famicom/
     $rom_copy $unraid_games/roms/fba/ pi@$gpi:$retropie_home/roms/fba/
     $rom_copy $unraid_games/roms/gamegear/ pi@$gpi:$retropie_home/roms/gamegear/
-    $rom_copy $unraid_games/roms/gb/ pi@$gpi:$retropie_home/roms/gb/
+    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy/ pi@$gpi:$retropie_home/roms/gb/
+    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy\ Color/ pi@$gpi:$retropie_home/roms/gbc/
     $rom_copy $unraid_games/roms/gba/ pi@$gpi:$retropie_home/roms/gba/
-    $rom_copy $unraid_games/roms/gbc/ pi@$gpi:$retropie_home/roms/gbc/
     $rom_copy $unraid_games/roms/mame-libretro/ pi@$gpi:$retropie_home/roms/mame-libretro/
     $rom_copy $unraid_games/roms/mastersystem/ pi@$gpi:$retropie_home/roms/mastersystem/
     $rom_copy $unraid_games/roms/megadrive/ pi@$gpi:$retropie_home/roms/megadrive/
@@ -120,8 +120,7 @@ roms() {
     $rom_copy $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
     $rom_copy $unraid_games/roms/famicom/ root@$mister:$mister_sd/games/NES/famicom/
     $rom_copy $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
-    $rom_copy $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/gb/
-    $rom_copy $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GAMEBOY/gbc/
+    $rom_copy $unraid_games/roms/gameboy/ root@$mister:$mister_sd/games/GAMEBOY/
     $rom_copy $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
     $rom_copy $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/mastersystem/
     $rom_copy $unraid_games/roms/macplus/ root@$mister:$mister_sd/games/MACPLUS/

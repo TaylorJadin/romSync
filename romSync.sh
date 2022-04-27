@@ -76,7 +76,7 @@ roms() {
     $rom_copy $unraid_games/roms/gba/ pi@$piboy:$retropie_home/roms/gba/
     $rom_copy $unraid_games/roms/mame-libretro/ pi@$piboy:$retropie_home/roms/mame-libretro/
     $rom_copy $unraid_games/roms/mastersystem/ pi@$piboy:$retropie_home/roms/mastersystem/
-    $rom_copy $unraid_games/roms/megadrive/ pi@$piboy:$retropie_home/roms/megadrive/
+    $rom_copy $unraid_games/roms/genesis/ pi@$piboy:$retropie_home/roms/megadrive/
     $rom_copy $unraid_games/roms/n64/ pi@$piboy:$retropie_home/roms/n64/
     $rom_copy $unraid_games/roms/neogeo/ pi@$piboy:$retropie_home/roms/neogeo/
     $rom_copy $unraid_games/roms/nes/ pi@$piboy:$retropie_home/roms/nes/
@@ -101,7 +101,7 @@ roms() {
     $rom_copy $unraid_games/roms/gba/ pi@$gpi:$retropie_home/roms/gba/
     $rom_copy $unraid_games/roms/mame-libretro/ pi@$gpi:$retropie_home/roms/mame-libretro/
     $rom_copy $unraid_games/roms/mastersystem/ pi@$gpi:$retropie_home/roms/mastersystem/
-    $rom_copy $unraid_games/roms/megadrive/ pi@$gpi:$retropie_home/roms/megadrive/
+    $rom_copy $unraid_games/roms/genesis/ pi@$gpi:$retropie_home/roms/megadrive/
     $rom_copy $unraid_games/roms/n64/ pi@$gpi:$retropie_home/roms/n64/
     $rom_copy $unraid_games/roms/neogeo/ pi@$gpi:$retropie_home/roms/neogeo/
     $rom_copy $unraid_games/roms/nes/ pi@$gpi:$retropie_home/roms/nes/
@@ -122,9 +122,9 @@ roms() {
     $rom_copy $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
     $rom_copy $unraid_games/roms/gameboy/ root@$mister:$mister_sd/games/GAMEBOY/
     $rom_copy $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
-    $rom_copy $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/mastersystem/
+    $rom_copy $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/
     $rom_copy $unraid_games/roms/macplus/ root@$mister:$mister_sd/games/MACPLUS/
-    $rom_copy $unraid_games/roms/megadrive/ root@$mister:$mister_sd/games/Genesis/
+    $rom_copy $unraid_games/roms/genesis/ root@$mister:$mister_sd/games/Genesis/
     $rom_copy $unraid_games/roms/neogeo_mister/ root@$mister:$mister_sd/games/NEOGEO/
     $rom_copy $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/nes/
     $rom_copy $unraid_games/roms/pc/ root@$mister:$mister_sd/games/AO486/

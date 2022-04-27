@@ -66,6 +66,7 @@ roms() {
     echo ""
     echo "--> Copying roms from unraid to $piboy"
     $rom_copy $unraid_games/roms/atari2600/ pi@$piboy:$retropie_home/roms/atari2600/
+    $rom_copy $unraid_games/roms/atari7800/ pi@$piboy:$retropie_home/roms/atari7800/
     $rom_copy $unraid_games/roms/atarilynx/ pi@$piboy:$retropie_home/roms/atarilynx/
     $rom_copy $unraid_games/roms/famicom/ pi@$piboy:$retropie_home/roms/famicom/
     $rom_copy $unraid_games/roms/fba/ pi@$piboy:$retropie_home/roms/fba/
@@ -90,6 +91,7 @@ roms() {
     echo ""
     echo "--> Copying roms from unraid to $gpi"
     $rom_copy $unraid_games/roms/atari2600/ pi@$gpi:$retropie_home/roms/atari2600/
+    $rom_copy $unraid_games/roms/atari7800/ pi@$gpi:$retropie_home/roms/atari7800/
     $rom_copy $unraid_games/roms/atarilynx/ pi@$gpi:$retropie_home/roms/atarilynx/
     $rom_copy $unraid_games/roms/famicom/ pi@$gpi:$retropie_home/roms/famicom/
     $rom_copy $unraid_games/roms/fba/ pi@$gpi:$retropie_home/roms/fba/
@@ -113,12 +115,9 @@ roms() {
   then
     echo ""
     echo "--> Copying roms from unraid to $mister"
-    $rom_copy $unraid_games/roms/atari800/ root@$mister:$mister_sd/games/ATARI800/
     $rom_copy $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
-    $rom_copy $unraid_games/roms/atari5200/ root@$mister:$mister_sd/games/ATARI5200/
     $rom_copy $unraid_games/roms/atari7800/ root@$mister:$mister_sd/games/ATARI7800/
     $rom_copy $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
-    $rom_copy $unraid_games/roms/c64/ root@$mister:$mister_sd/games/c64/
     $rom_copy $unraid_games/roms/famicom/ root@$mister:$mister_sd/games/NES/famicom/
     $rom_copy $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
     $rom_copy $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/gb/

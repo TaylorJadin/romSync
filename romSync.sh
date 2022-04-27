@@ -71,8 +71,8 @@ roms() {
     $rom_copy $unraid_games/roms/famicom/ pi@$piboy:$retropie_home/roms/famicom/
     $rom_copy $unraid_games/roms/fba/ pi@$piboy:$retropie_home/roms/fba/
     $rom_copy $unraid_games/roms/gamegear/ pi@$piboy:$retropie_home/roms/gamegear/
-    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy/ pi@$piboy:$retropie_home/roms/gb/
-    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy\ Color/ pi@$piboy:$retropie_home/roms/gbc/
+    $rom_copy $unraid_games/roms/gameboy/Game\ Boy/ pi@$piboy:$retropie_home/roms/gb/
+    $rom_copy $unraid_games/roms/gameboy/Game\ Boy\ Color/ pi@$piboy:$retropie_home/roms/gbc/
     $rom_copy $unraid_games/roms/gba/ pi@$piboy:$retropie_home/roms/gba/
     $rom_copy $unraid_games/roms/mame-libretro/ pi@$piboy:$retropie_home/roms/mame-libretro/
     $rom_copy $unraid_games/roms/mastersystem/ pi@$piboy:$retropie_home/roms/mastersystem/
@@ -96,8 +96,8 @@ roms() {
     $rom_copy $unraid_games/roms/famicom/ pi@$gpi:$retropie_home/roms/famicom/
     $rom_copy $unraid_games/roms/fba/ pi@$gpi:$retropie_home/roms/fba/
     $rom_copy $unraid_games/roms/gamegear/ pi@$gpi:$retropie_home/roms/gamegear/
-    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy/ pi@$gpi:$retropie_home/roms/gb/
-    $rom_copy $unraid_games/roms/gameboy/1\ Game\ Boy\ Color/ pi@$gpi:$retropie_home/roms/gbc/
+    $rom_copy $unraid_games/roms/gameboy/Game\ Boy/ pi@$gpi:$retropie_home/roms/gb/
+    $rom_copy $unraid_games/roms/gameboy/Game\ Boy\ Color/ pi@$gpi:$retropie_home/roms/gbc/
     $rom_copy $unraid_games/roms/gba/ pi@$gpi:$retropie_home/roms/gba/
     $rom_copy $unraid_games/roms/mame-libretro/ pi@$gpi:$retropie_home/roms/mame-libretro/
     $rom_copy $unraid_games/roms/mastersystem/ pi@$gpi:$retropie_home/roms/mastersystem/

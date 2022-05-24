@@ -65,74 +65,40 @@ roms() {
   then
     echo ""
     echo "--> Copying roms from unraid to $piboy"
-    $rom_copy $unraid_games/roms/atari2600/ pi@$piboy:$retropie_home/roms/atari2600/
-    $rom_copy $unraid_games/roms/atari7800/ pi@$piboy:$retropie_home/roms/atari7800/
-    $rom_copy $unraid_games/roms/atarilynx/ pi@$piboy:$retropie_home/roms/atarilynx/
-    $rom_copy $unraid_games/roms/famicom/ pi@$piboy:$retropie_home/roms/famicom/
-    $rom_copy $unraid_games/roms/fba/ pi@$piboy:$retropie_home/roms/fba/
-    $rom_copy $unraid_games/roms/gamegear/ pi@$piboy:$retropie_home/roms/gamegear/
-    $rom_copy $unraid_games/roms/gameboy/Game\ Boy/ pi@$piboy:$retropie_home/roms/gb/
-    $rom_copy $unraid_games/roms/gameboy/Game\ Boy\ Color/ pi@$piboy:$retropie_home/roms/gbc/
-    $rom_copy $unraid_games/roms/gba/ pi@$piboy:$retropie_home/roms/gba/
-    $rom_copy $unraid_games/roms/mame-libretro/ pi@$piboy:$retropie_home/roms/mame-libretro/
-    $rom_copy $unraid_games/roms/mastersystem/ pi@$piboy:$retropie_home/roms/mastersystem/
-    $rom_copy $unraid_games/roms/genesis/ pi@$piboy:$retropie_home/roms/megadrive/
-    $rom_copy $unraid_games/roms/n64/ pi@$piboy:$retropie_home/roms/n64/
-    $rom_copy $unraid_games/roms/neogeo/ pi@$piboy:$retropie_home/roms/neogeo/
-    $rom_copy $unraid_games/roms/nes/ pi@$piboy:$retropie_home/roms/nes/
-    $rom_copy $unraid_games/roms/ngpc/ pi@$piboy:$retropie_home/roms/ngpc/
-    $rom_copy $unraid_games/roms/pcengine/ pi@$piboy:$retropie_home/roms/pcengine/
-    $rom_copy $unraid_games/roms/sega32x/ pi@$piboy:$retropie_home/roms/sega32x/
-    $rom_copy $unraid_games/roms/snes/ pi@$piboy:$retropie_home/roms/snes/
+    # $rom_copy $unraid_games/roms/atari2600/ pi@$piboy:$retropie_home/roms/atari2600/
   fi
 
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
     echo "--> Copying roms from unraid to $gpi"
-    $rom_copy $unraid_games/roms/atari2600/ pi@$gpi:$retropie_home/roms/atari2600/
-    $rom_copy $unraid_games/roms/atari7800/ pi@$gpi:$retropie_home/roms/atari7800/
-    $rom_copy $unraid_games/roms/atarilynx/ pi@$gpi:$retropie_home/roms/atarilynx/
-    $rom_copy $unraid_games/roms/famicom/ pi@$gpi:$retropie_home/roms/famicom/
-    $rom_copy $unraid_games/roms/fba/ pi@$gpi:$retropie_home/roms/fba/
-    $rom_copy $unraid_games/roms/gamegear/ pi@$gpi:$retropie_home/roms/gamegear/
-    $rom_copy $unraid_games/roms/gameboy/Game\ Boy/ pi@$gpi:$retropie_home/roms/gb/
-    $rom_copy $unraid_games/roms/gameboy/Game\ Boy\ Color/ pi@$gpi:$retropie_home/roms/gbc/
-    $rom_copy $unraid_games/roms/gba/ pi@$gpi:$retropie_home/roms/gba/
-    $rom_copy $unraid_games/roms/mame-libretro/ pi@$gpi:$retropie_home/roms/mame-libretro/
-    $rom_copy $unraid_games/roms/mastersystem/ pi@$gpi:$retropie_home/roms/mastersystem/
-    $rom_copy $unraid_games/roms/genesis/ pi@$gpi:$retropie_home/roms/megadrive/
-    $rom_copy $unraid_games/roms/n64/ pi@$gpi:$retropie_home/roms/n64/
-    $rom_copy $unraid_games/roms/neogeo/ pi@$gpi:$retropie_home/roms/neogeo/
-    $rom_copy $unraid_games/roms/nes/ pi@$gpi:$retropie_home/roms/nes/
-    $rom_copy $unraid_games/roms/ngpc/ pi@$gpi:$retropie_home/roms/ngpc/
-    $rom_copy $unraid_games/roms/pcengine/ pi@$gpi:$retropie_home/roms/pcengine/
-    $rom_copy $unraid_games/roms/sega32x/ pi@$gpi:$retropie_home/roms/sega32x/
-    $rom_copy $unraid_games/roms/snes/ pi@$gpi:$retropie_home/roms/snes/
+    # $rom_copy $unraid_games/roms/atari2600/ pi@$gpi:$retropie_home/roms/atari2600/
   fi
 
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
     echo "--> Copying roms from unraid to $mister"
-    $rom_copy $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
-    $rom_copy $unraid_games/roms/atari7800/ root@$mister:$mister_sd/games/ATARI7800/
-    $rom_copy $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
-    $rom_copy $unraid_games/roms/famicom/ root@$mister:$mister_sd/games/NES/famicom/
-    $rom_copy $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/SMS/gamegear/
-    $rom_copy $unraid_games/roms/gameboy/ root@$mister:$mister_sd/games/GAMEBOY/
-    $rom_copy $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
-    $rom_copy $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/
-    $rom_copy $unraid_games/roms/macplus/ root@$mister:$mister_sd/games/MACPLUS/
-    $rom_copy $unraid_games/roms/genesis/ root@$mister:$mister_sd/games/Genesis/
-    $rom_copy $unraid_games/roms/neogeo_mister/ root@$mister:$mister_sd/games/NEOGEO/
-    $rom_copy $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/nes/
-    $rom_copy $unraid_games/roms/pc/ root@$mister:$mister_sd/games/AO486/
-    $rom_copy $unraid_games/roms/pcengine/ root@$mister:$mister_sd/games/TGFX16/
-    $rom_copy $unraid_games/roms/pcenginecd/ root@$mister:$mister_sd/games/TGFX16-CD/
-    $rom_copy $unraid_games/roms/segacd/ root@$mister:$mister_sd/games/MegaCD/
-    $rom_copy $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
-    $rom_copy $unraid_games/roms/wonderswan/ root@$mister:$mister_sd/games/WonderSwan/
+    $rom_copy $unraid_games/roms/Amiga/ root@$mister:$mister_sd/games/Amgia/
+    $rom_copy $unraid_games/roms/ATARI2600/ root@$mister:$mister_sd/games/ATARI2600/
+    $rom_copy $unraid_games/roms/ATARI5200/ root@$mister:$mister_sd/games/ATARI5200/
+    $rom_copy $unraid_games/roms/ATARI7800/ root@$mister:$mister_sd/games/ATARI7800/
+    $rom_copy $unraid_games/roms/AtariLynx/ root@$mister:$mister_sd/games/AtariLynx/
+    $rom_copy $unraid_games/roms/C64/ root@$mister:$mister_sd/games/C64/
+    $rom_copy $unraid_games/roms/Coleco/ root@$mister:$mister_sd/games/Coleco/
+    $rom_copy $unraid_games/roms/GAMEBOY/ root@$mister:$mister_sd/games/GAMEBOY/
+    $rom_copy $unraid_games/roms/GBA/ root@$mister:$mister_sd/games/GBA/
+    $rom_copy $unraid_games/roms/Genesis/ root@$mister:$mister_sd/games/Genesis/
+    $rom_copy $unraid_games/roms/NEOGEO/ root@$mister:$mister_sd/games/NEOGEO/
+    $rom_copy $unraid_games/roms/NES/ root@$mister:$mister_sd/games/NES/
+    $rom_copy $unraid_games/roms/GAMEBOY/ root@$mister:$mister_sd/games/GAMEBOY/
+    $rom_copy $unraid_games/roms/S32X/ root@$mister:$mister_sd/games/S32X/
+    $rom_copy $unraid_games/roms/SMS/ root@$mister:$mister_sd/games/SMS/
+    $rom_copy $unraid_games/roms/SNES/ root@$mister:$mister_sd/games/SNES/
+    $rom_copy $unraid_games/roms/Spectrum/ root@$mister:$mister_sd/games/Spectrum/
+    $rom_copy $unraid_games/roms/TGFX16/ root@$mister:$mister_sd/games/TGFX16/
+    $rom_copy $unraid_games/roms/VECTREX/ root@$mister:$mister_sd/games/VECTREX/
+    $rom_copy $unraid_games/roms/WonderSwan/ root@$mister:$mister_sd/games/WonderSwan/
   fi
 }
 

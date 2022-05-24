@@ -8,7 +8,8 @@ unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
 save_sync="rsync -ri --times --update"
-rom_copy="rsync -ri --ignore-existing"
+#rom_copy="rsync -ri --ignore-existing"
+rom_copy="rsync -ri"
 
 ### Functions ###
 

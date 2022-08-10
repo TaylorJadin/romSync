@@ -61,10 +61,10 @@ saves() {
   then
     echo ""
     echo "--> Syncing saves from $deck"
-    $save_sync deck@deck:$deck_emufolder/saves/ $unraid_games/deck/saves/
+    $save_sync deck@$deck:$deck_emufolder/saves/ $unraid_games/deck/saves/
     echo ""
     echo "--> Syncing saves back to $deck"
-    $save_sync $unraid_games/deck/saves/ deck@deck:$deck_emufolder/saves/
+    $save_sync $unraid_games/deck/saves/ deck@$deck:$deck_emufolder/saves/
   fi
 }
 

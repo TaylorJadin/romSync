@@ -66,10 +66,10 @@ saves() {
   then
     echo ""
     echo "--> Syncing saves from $deck"
-    $save_sync root@deck:$deck_emufolder/saves/ $unraid_games/deck/saves/
+    $save_sync deck@deck:$deck_emufolder/saves/ $unraid_games/deck/saves/
     echo ""
     echo "--> Syncing saves back to $deck"
-    $save_sync $unraid_games/deck/saves/ root@deck:$deck_emufolder/saves/
+    $save_sync $unraid_games/deck/saves/ deck@deck:$deck_emufolder/saves/
   fi
 }
 
@@ -99,7 +99,7 @@ roms() {
   then
     echo ""
     echo "--> Copying roms from unraid to $deck"
-    $rom_copy $unraid_games/roms/ATARI2600/ root@$deck:$deck_emufolder/roms/atari2600/
+    $rom_copy $unraid_games/roms/ATARI2600/ deck@$deck:$deck_emufolder/roms/atari2600/
   fi
 }
 

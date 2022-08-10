@@ -1,0 +1,4 @@
+media
+gamelist*
+mame2003
+4 Game Series Collections

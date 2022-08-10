@@ -14,11 +14,6 @@ rom_copy="rsync -ri --ignore-existing --exclude-from=/mnt/user/appdata/romSync/e
 
 ### Functions ###
 
-mirror() {
-  rom_copy="rsync -ri --delete --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
-  save_sync="rsync -ri --times --update --delete"
-}
-
 saves() {
   if ping -c 1 $piboy &> /dev/null
   then
@@ -100,6 +95,12 @@ roms() {
     echo ""
     echo "--> Copying roms from unraid to $deck"
     $rom_copy $unraid_games/roms/ATARI2600/ deck@$deck:$deck_emufolder/roms/atari2600/
+    $rom_copy $unraid_games/roms/ATARI5200/ deck@$deck:$deck_emufolder/roms/atari5200/
+    $rom_copy $unraid_games/roms/ATARI7800/ deck@$deck:$deck_emufolder/roms/atari7800/
+    $rom_copy $unraid_games/roms/AtariJaguar/ deck@$deck:$deck_emufolder/roms/atarijaguar/
+    $rom_copy $unraid_games/roms/AtariLynx/ deck@$deck:$deck_emufolder/roms/atarilynx/
+    $rom_copy $unraid_games/roms/AtariST/ deck@$deck:$deck_emufolder/roms/atarist/
+    $rom_copy $unraid_games/roms/C64/ deck@$deck:$deck_emufolder/roms/c64/
   fi
 }
 
@@ -109,10 +110,7 @@ usage() {
    echo "Using no flags will will first sync saves then roms. If any of"
    echo "the devices are unreachable it will skip those devices."
    echo
-   echo "Syntax: romSync [--mirror | --help]"
-   echo "options:"
-   echo "mirror   Use --delete flag when rsyncing roms and saves"
-   echo "help     Print this help"
+   echo "Syntax: romSync [--roms | --saves | --help]"
    echo
 }
 
@@ -123,11 +121,14 @@ if [ "$1" = "" ]; then
 else
   while [ "$1" != "" ]; do
   case $1 in
-    --mirror )    shift
-                  echo "--> Mirror"
-                  mirror
-                  saves
+    -r | --roms ) shift
+                  echo "--> Roms"
                   roms
+                  echo ""
+                  ;;
+    -s | --saves) shift
+                  echo "--> Saves"
+                  saves
                   echo ""
                   ;;
     -h | --help ) usage

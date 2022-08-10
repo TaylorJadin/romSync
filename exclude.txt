@@ -2,3 +2,6 @@ media
 gamelist*
 mame2003
 4 Game Series Collections
+3 GBC with GB Compatibility - Black Carts
+3 Super Game Boy Enhanced
+3 GB with GBC Color Palettes

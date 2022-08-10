@@ -4,17 +4,19 @@
 piboy='piboy'
 gpi='gpi2'
 mister='MiSTer'
+deck='steamdeck.lan'
 unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
+deck_emufolder='/home/deck/Emulation'
 save_sync="rsync -ri --times --update"
-#rom_copy="rsync -ri --ignore-existing"
-rom_copy="rsync -ri"
+rom_copy="rsync -ri --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 
 mirror() {
-  rom_copy="rsync -ri --delete"
+  rom_copy="rsync -ri --delete --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+  save_sync="rsync -ri --times --update --delete"
 }
 
 saves() {
@@ -59,6 +61,16 @@ saves() {
     $save_sync $unraid_games/mister/savestates/ root@$mister:$mister_sd/savestates/
     $save_sync $unraid_games/mister/screenshots/ root@$mister:$mister_sd/screenshots/
   fi
+
+  if ping -c 1 $deck &> /dev/null
+  then
+    echo ""
+    echo "--> Syncing saves from $deck"
+    $save_sync root@deck:$deck_emufolder/saves/ $unraid_games/deck/saves/
+    echo ""
+    echo "--> Syncing saves back to $deck"
+    $save_sync $unraid_games/deck/saves/ root@deck:$deck_emufolder/saves/
+  fi
 }
 
 roms() {
@@ -66,40 +78,28 @@ roms() {
   then
     echo ""
     echo "--> Copying roms from unraid to $piboy"
-    # $rom_copy $unraid_games/roms/atari2600/ pi@$piboy:$retropie_home/roms/atari2600/
+    # $rom_copy $unraid_games/roms/SYSTEM/ pi@$piboy:$retropie_home/roms/SYSTEM/
   fi
 
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
     echo "--> Copying roms from unraid to $gpi"
-    # $rom_copy $unraid_games/roms/atari2600/ pi@$gpi:$retropie_home/roms/atari2600/
+    # $rom_copy $unraid_games/roms/SYSTEM/ pi@$gpi:$retropie_home/roms/SYSTEM/
   fi
 
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
     echo "--> Copying roms from unraid to $mister"
-    $rom_copy $unraid_games/roms/Amiga/ root@$mister:$mister_sd/games/Amgia/
-    $rom_copy $unraid_games/roms/ATARI2600/ root@$mister:$mister_sd/games/ATARI2600/
-    $rom_copy $unraid_games/roms/ATARI5200/ root@$mister:$mister_sd/games/ATARI5200/
-    $rom_copy $unraid_games/roms/ATARI7800/ root@$mister:$mister_sd/games/ATARI7800/
-    $rom_copy $unraid_games/roms/AtariLynx/ root@$mister:$mister_sd/games/AtariLynx/
-    $rom_copy $unraid_games/roms/C64/ root@$mister:$mister_sd/games/C64/
-    $rom_copy $unraid_games/roms/Coleco/ root@$mister:$mister_sd/games/Coleco/
-    $rom_copy $unraid_games/roms/GAMEBOY/ root@$mister:$mister_sd/games/GAMEBOY/
-    $rom_copy $unraid_games/roms/GBA/ root@$mister:$mister_sd/games/GBA/
-    $rom_copy $unraid_games/roms/Genesis/ root@$mister:$mister_sd/games/Genesis/
-    $rom_copy $unraid_games/roms/NEOGEO/ root@$mister:$mister_sd/games/NEOGEO/
-    $rom_copy $unraid_games/roms/NES/ root@$mister:$mister_sd/games/NES/
-    $rom_copy $unraid_games/roms/GAMEBOY/ root@$mister:$mister_sd/games/GAMEBOY/
-    $rom_copy $unraid_games/roms/S32X/ root@$mister:$mister_sd/games/S32X/
-    $rom_copy $unraid_games/roms/SMS/ root@$mister:$mister_sd/games/SMS/
-    $rom_copy $unraid_games/roms/SNES/ root@$mister:$mister_sd/games/SNES/
-    $rom_copy $unraid_games/roms/Spectrum/ root@$mister:$mister_sd/games/Spectrum/
-    $rom_copy $unraid_games/roms/TGFX16/ root@$mister:$mister_sd/games/TGFX16/
-    $rom_copy $unraid_games/roms/VECTREX/ root@$mister:$mister_sd/games/VECTREX/
-    $rom_copy $unraid_games/roms/WonderSwan/ root@$mister:$mister_sd/games/WonderSwan/
+    # $rom_copy $unraid_games/roms/SYSTEM/ root@$mister:$mister_sd/games/SYSTEM/
+  fi
+
+  if ping -c 1 $deck &> /dev/null
+  then
+    echo ""
+    echo "--> Copying roms from unraid to $deck"
+    $rom_copy $unraid_games/roms/ATARI2600/ root@$deck:$deck_emufolder/roms/atari2600/
   fi
 }
 
@@ -111,7 +111,7 @@ usage() {
    echo
    echo "Syntax: romSync [--mirror | --help]"
    echo "options:"
-   echo "mirror   Use --delete flag when rsyncing roms"
+   echo "mirror   Use --delete flag when rsyncing roms and saves"
    echo "help     Print this help"
    echo
 }
@@ -125,6 +125,7 @@ else
   case $1 in
     --mirror )    shift
                   echo "--> Mirror"
+                  mirror
                   saves
                   roms
                   echo ""

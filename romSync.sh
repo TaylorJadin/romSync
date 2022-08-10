@@ -99,8 +99,11 @@ roms() {
     $rom_copy $unraid_games/roms/ATARI7800/ deck@$deck:$deck_emufolder/roms/atari7800/
     $rom_copy $unraid_games/roms/AtariJaguar/ deck@$deck:$deck_emufolder/roms/atarijaguar/
     $rom_copy $unraid_games/roms/AtariLynx/ deck@$deck:$deck_emufolder/roms/atarilynx/
-    $rom_copy $unraid_games/roms/AtariST/ deck@$deck:$deck_emufolder/roms/atarist/
-    $rom_copy $unraid_games/roms/C64/ deck@$deck:$deck_emufolder/roms/c64/
+    $rom_copy $unraid_games/roms/GAMEBOY/1\ Game\ Boy/ deck@$deck:$deck_emufolder/roms/gb/
+    $rom_copy $unraid_games/roms/GAMEBOY/1\ Game\ Boy\ Color/ deck@$deck:$deck_emufolder/roms/gbc/
+    $rom_copy $unraid_games/roms/GBA/ deck@$deck:$deck_emufolder/roms/gba/
+    $rom_copy $unraid_games/roms/Genesis/ deck@$deck:$deck_emufolder/roms/genesis/
+    $rom_copy $unraid_games/roms/N64/ deck@$deck:$deck_emufolder/roms/n64/
   fi
 }
 

@@ -2,6 +2,11 @@ media
 gamelist*
 mame2003
 4 Game Series Collections
+4 Beta, Prototypes, Revisions
 3 GBC with GB Compatibility - Black Carts
 3 Super Game Boy Enhanced
 3 GB with GBC Color Palettes
+2 Virtual Console & Advance Play Edition
+2 GBA Video
+2 Japan -*
+2 Europe -*

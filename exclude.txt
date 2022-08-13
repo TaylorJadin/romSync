@@ -8,6 +8,8 @@ mame2003
 3 GB with GBC Color Palettes
 2 Virtual Console & Advance Play Edition
 2 GBA Video
+2 GBC*
+2 GB*
 2 Japan -*
 2 Europe -*
 2 Other Regions -*

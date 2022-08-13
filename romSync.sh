@@ -9,8 +9,8 @@ unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
 deck_emufolder='/home/deck/Emulation'
-save_sync="rsync -ri --times --update"
-rom_copy="rsync -ri --delete --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+save_sync="rsync -riz --times --update"
+rom_copy="rsync -riz --delete --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 

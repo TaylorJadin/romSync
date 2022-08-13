@@ -10,3 +10,4 @@ mame2003
 2 GBA Video
 2 Japan -*
 2 Europe -*
+2 Other Regions -*

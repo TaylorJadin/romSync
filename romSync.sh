@@ -10,7 +10,7 @@ retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
 deck_emufolder='/home/deck/Emulation'
 save_sync="rsync -ri --times --update"
-rom_copy="rsync -ri --delete --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+rom_copy="rsync -ri --delete --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 

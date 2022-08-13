@@ -99,11 +99,21 @@ roms() {
     $rom_copy $unraid_games/roms/ATARI7800/ deck@$deck:$deck_emufolder/roms/atari7800/
     $rom_copy $unraid_games/roms/AtariJaguar/ deck@$deck:$deck_emufolder/roms/atarijaguar/
     $rom_copy $unraid_games/roms/AtariLynx/ deck@$deck:$deck_emufolder/roms/atarilynx/
+    $rom_copy $unraid_games/roms/Coleco/Colecovision/ deck@$deck:$deck_emufolder/roms/colecovision/
+    $rom_copy $unraid_games/roms/Coleco/SG1000/ deck@$deck:$deck_emufolder/roms/sg-1000/
     $rom_copy $unraid_games/roms/GAMEBOY/1\ Game\ Boy/ deck@$deck:$deck_emufolder/roms/gb/
     $rom_copy $unraid_games/roms/GAMEBOY/1\ Game\ Boy\ Color/ deck@$deck:$deck_emufolder/roms/gbc/
     $rom_copy $unraid_games/roms/GBA/ deck@$deck:$deck_emufolder/roms/gba/
     $rom_copy $unraid_games/roms/Genesis/ deck@$deck:$deck_emufolder/roms/genesis/
     $rom_copy $unraid_games/roms/N64/ deck@$deck:$deck_emufolder/roms/n64/
+    $rom_copy $unraid_games/roms/NEOGEO/ deck@$deck:$deck_emufolder/roms/neogeo/
+    $rom_copy $unraid_games/roms/NeoGeoPocketColor/1\ NGPC\ US\ -\ A-Z/ deck@$deck:$deck_emufolder/roms/ngpc/
+    $rom_copy $unraid_games/roms/NeoGeoPocketColor/3\ NGP\ -\ A-Z/ deck@$deck:$deck_emufolder/roms/ngp/
+    $rom_copy $unraid_games/roms/NES/ deck@$deck:$deck_emufolder/roms/nes/
+    $rom_copy $unraid_games/roms/S32X/ deck@$deck:$deck_emufolder/roms/sega32x/
+    $rom_copy $unraid_games/roms/SMS/ deck@$deck:$deck_emufolder/roms/mastersystem/
+    $rom_copy $unraid_games/roms/SNES/ deck@$deck:$deck_emufolder/roms/snes/
+    $rom_copy $unraid_games/roms/TGFX16/ deck@$deck:$deck_emufolder/roms/tg16/
   fi
 }
 

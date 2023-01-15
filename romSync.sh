@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ### Variables ###
-piboy='piboy'
 gpi='gpi2'
 mister='MiSTer'
 deck='steamdeck.lan'
@@ -15,20 +14,6 @@ rom_copy="rsync -ri --delete --ignore-existing --exclude-from=/mnt/user/appdata/
 ### Functions ###
 
 saves() {
-  if ping -c 1 $piboy &> /dev/null
-  then
-    echo ""
-    echo "--> Syncing saves and screenshots from $piboy"
-    $save_sync pi@$piboy:$retropie_home/saves/ $unraid_games/retroarch/saves/
-    $save_sync pi@$piboy:$retropie_home/savestates/ $unraid_games/retroarch/savestates/
-    $save_sync pi@$piboy:$retropie_home/screenshots/ $unraid_games/retroarch/screenshots/
-    echo ""
-    echo "--> Syncing saves and screenshots back to $piboy"
-    $save_sync $unraid_games/retroarch/saves/ pi@$piboy:$retropie_home/saves/
-    $save_sync $unraid_games/retroarch/savestates/ pi@$piboy:$retropie_home/savestates/
-    $save_sync $unraid_games/retroarch/screenshots/ pi@$piboy:$retropie_home/screenshots/
-  fi
-
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
@@ -69,12 +54,6 @@ saves() {
 }
 
 roms() {
-  if ping -c 1 $piboy &> /dev/null
-  then
-    echo ""
-    echo "--> Copying roms from unraid to $piboy"
-    # $rom_copy $unraid_games/roms/SYSTEM/ pi@$piboy:$retropie_home/roms/SYSTEM/
-  fi
 
   if ping -c 1 $gpi &> /dev/null
   then

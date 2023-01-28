@@ -1,16 +1,11 @@
 rom_copy="rsync -ri --ignore-existing --exclude-from=./exclude.txt"
-unraid_games="root@unraid.jadin.me:/mnt/user/games"
-pocket_sd=$1
-
-if [[ $1 -eq 0 ]] ; then
-	echo 'Specify destination path'
-	exit 0
-fi
+unraid_games=/Volumes/games
+pocket_sd=/Volumes/PocketSD
 
 $rom_copy $unraid_games/roms/ATARI2600/ $pocket_sd/Assets/2600/common/
 $rom_copy $unraid_games/roms/ATARI7800/ $pocket_sd/Assets/7800/common/
-$rom_copy $unraid_games/roms/Coleco/Colecovision/ $pocket_sd/Assets/colecovision/common/
-$rom_copy $unraid_games/roms/Coleco/SG1000/ $pocket_sd/Assets/sg-1000/common/
+$rom_copy $unraid_games/roms/Coleco/Colecovision/ $pocket_sd/Assets/coleco/common/
+$rom_copy $unraid_games/roms/Coleco/SG1000/ $pocket_sd/Assets/sg1000/common/
 $rom_copy $unraid_games/roms/GAMEBOY/1\ Game\ Boy/ $pocket_sd/Assets/gb/common/
 $rom_copy $unraid_games/roms/GAMEBOY/1\ Game\ Boy\ Color/ $pocket_sd/Assets/gbc/common/
 $rom_copy $unraid_games/roms/GBA/ $pocket_sd/Assets/gba/common/

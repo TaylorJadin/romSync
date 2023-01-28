@@ -1,4 +1,4 @@
-rom_copy="rsync -ri --delete --ignore-existing --exclude-from=./exclude.txt"
+rom_copy="rsync -ri --ignore-existing --exclude-from=./exclude.txt"
 unraid_games="root@unraid.jadin.me:/mnt/user/games"
 pocket_sd=$1
 
@@ -7,7 +7,7 @@ if [[ $1 -eq 0 ]] ; then
 	exit 0
 fi
 
-$rom_copy $unraid_games/roms/ATARI2600/ $pocket_sd/Assets/atari2600/common/
+$rom_copy $unraid_games/roms/ATARI2600/ $pocket_sd/Assets/2600/common/
 $rom_copy $unraid_games/roms/ATARI7800/ $pocket_sd/Assets/7800/common/
 $rom_copy $unraid_games/roms/Coleco/Colecovision/ $pocket_sd/Assets/colecovision/common/
 $rom_copy $unraid_games/roms/Coleco/SG1000/ $pocket_sd/Assets/sg-1000/common/

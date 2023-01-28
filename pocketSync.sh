@@ -1,6 +1,6 @@
 rom_copy="rsync -ri --delete --ignore-existing --exclude-from=./exclude.txt"
 unraid_games="root@unraid.jadin.me:/mnt/user/games"
-pocket_sd=$2
+pocket_sd=$1
 
 if [[ $1 -eq 0 ]] ; then
 	echo 'Specify destination path'

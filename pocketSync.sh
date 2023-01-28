@@ -1,6 +1,11 @@
 rom_copy="rsync -ri --delete --ignore-existing --exclude-from=./exclude.txt"
-unraid_games='/mnt/user/games'
-pocket_sd='/Volumes/PocketSD'
+unraid_games="root@unraid.jadin.me:/mnt/user/games"
+pocket_sd=$2
+
+if [[ $1 -eq 0 ]] ; then
+	echo 'Specify destination path'
+	exit 0
+fi
 
 $rom_copy $unraid_games/roms/ATARI2600/ $pocket_sd/Assets/atari2600/common/
 $rom_copy $unraid_games/roms/ATARI7800/ $pocket_sd/Assets/7800/common/

@@ -17,39 +17,27 @@ saves() {
   if ping -c 1 $gpi &> /dev/null
   then
     echo ""
-    echo "--> Syncing saves and screenshots from $gpi"
+    echo "--> Backing up saves and screenshots from $gpi"
     $save_sync pi@$gpi:$retropie_home/saves/ $unraid_games/retroarch/saves/
     $save_sync pi@$gpi:$retropie_home/savestates/ $unraid_games/retroarch/savestates/
     $save_sync pi@$gpi:$retropie_home/screenshots/ $unraid_games/retroarch/screenshots/
-    echo ""
-    echo "--> Syncing saves and screenshots back to $gpi"
-    $save_sync $unraid_games/retroarch/saves/ pi@$gpi:$retropie_home/saves/
-    $save_sync $unraid_games/retroarch/savestates/ pi@$gpi:$retropie_home/savestates/
-    $save_sync $unraid_games/retroarch/screenshots/ pi@$gpi:$retropie_home/screenshots/
   fi
 
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
-    echo "--> Syncing saves and screenshots from $mister"
+    echo "--> Backing up saves and screenshots from $mister"
     $save_sync root@$mister:$mister_sd/saves/ $unraid_games/mister/saves/
     $save_sync root@$mister:$mister_sd/savestates/ $unraid_games/mister/savestates
     $save_sync root@$mister:$mister_sd/screenshots/ $unraid_games/mister/screenshots
-    echo ""
-    echo "--> Syncing saves and screenshots back to $mister"
-    $save_sync $unraid_games/mister/saves/ root@$mister:$mister_sd/saves/
-    $save_sync $unraid_games/mister/savestates/ root@$mister:$mister_sd/savestates/
-    $save_sync $unraid_games/mister/screenshots/ root@$mister:$mister_sd/screenshots/
   fi
 
   if ping -c 1 $deck &> /dev/null
   then
     echo ""
-    echo "--> Syncing saves from $deck"
-    $save_sync deck@$deck:$deck_emufolder/saves/ $unraid_games/deck/
-    echo ""
-    echo "--> Syncing saves back to $deck"
-    $save_sync $unraid_games/deck/ deck@$deck:$deck_emufolder/saves/
+    echo "--> Backing up saves from $deck"
+    $save_sync deck@$deck:$deck_emufolder/saves/ $unraid_games/deck/saves/
+    $save_sync deck@$deck:$deck_emufolder/storage/ $unraid_games/deck/storage/
   fi
 }
 

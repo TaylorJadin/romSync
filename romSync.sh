@@ -3,7 +3,7 @@
 ### Variables ###
 gpi='gpi2'
 mister='MiSTer'
-deck='steamdeck.lan'
+deck='steamdeck.local'
 unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'

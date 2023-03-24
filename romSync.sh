@@ -3,7 +3,7 @@
 ### Variables ###
 gpi='gpi2'
 mister='MiSTer'
-deck='steamdeck.local'
+deck='taylor-deck.local'
 unraid_games='/mnt/user/games'
 retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
@@ -21,6 +21,9 @@ saves() {
     $save_sync pi@$gpi:$retropie_home/saves/ $unraid_games/retroarch/saves/
     $save_sync pi@$gpi:$retropie_home/savestates/ $unraid_games/retroarch/savestates/
     $save_sync pi@$gpi:$retropie_home/screenshots/ $unraid_games/retroarch/screenshots/
+  else
+    echo ""
+    echo "$gpi not online."
   fi
 
   if ping -c 1 $mister &> /dev/null
@@ -30,6 +33,9 @@ saves() {
     $save_sync root@$mister:$mister_sd/saves/ $unraid_games/mister/saves/
     $save_sync root@$mister:$mister_sd/savestates/ $unraid_games/mister/savestates
     $save_sync root@$mister:$mister_sd/screenshots/ $unraid_games/mister/screenshots
+  else
+    echo ""
+    echo "$mister not online."
   fi
 
   if ping -c 1 $deck &> /dev/null
@@ -38,6 +44,10 @@ saves() {
     echo "--> Backing up saves from $deck"
     $save_sync deck@$deck:$deck_emufolder/saves/ $unraid_games/deck/saves/
     $save_sync deck@$deck:$deck_emufolder/storage/ $unraid_games/deck/storage/
+  else
+    echo ""
+    echo "$deck not online."
+  fi
   fi
 }
 

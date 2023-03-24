@@ -48,7 +48,6 @@ saves() {
     echo ""
     echo "$deck not online."
   fi
-  fi
 }
 
 roms() {

@@ -31,7 +31,7 @@ saves() {
 
   if ping -c 1 $deck &> /dev/null
   then
-
+    echo ""
   else
     echo ""
     echo "$deck not online."

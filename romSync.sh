@@ -43,7 +43,22 @@ roms() {
   then
     echo ""
     echo "--> Copying roms from unraid to $mister"
-    # $rom_copy $unraid_games/roms/SYSTEM/ root@$mister:$mister_sd/games/SYSTEM/
+    $rom_copy $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
+    $rom_copy $unraid_games/roms/atari5200/ root@$mister:$mister_sd/games/ATARI5200/
+    $rom_copy $unraid_games/roms/atari7800/ root@$mister:$mister_sd/games/ATARI7800/
+    $rom_copy $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
+    $rom_copy $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/GameGear/
+    $rom_copy $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/
+    $rom_copy $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GBC/
+    $rom_copy $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
+    $rom_copy $unraid_games/roms/genesis/ root@$mister:$mister_sd/games/Genesis/
+    $rom_copy $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/
+    $rom_copy $unraid_games/roms/n64/ root@$mister:$mister_sd/games/N64/
+    $rom_copy $unraid_games/roms/neogeo/ root@$mister:$mister_sd/games/NEOGEO/
+    $rom_copy $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
+    $rom_copy $unraid_games/roms/sega32x/ root@$mister:$mister_sd/games/S32X/
+    $rom_copy $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
+    $rom_copy $unraid_games/roms/wonderswan/ root@$mister:$mister_sd/games/WonderSwan/
   fi
 
   if ping -c 1 $deck &> /dev/null

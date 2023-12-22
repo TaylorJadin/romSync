@@ -95,6 +95,7 @@ roms() {
       $rom_copy $unraid_games/roms/gba/ $miyoo_sd/Roms/GBA/
       $rom_copy $unraid_games/roms/genesis/ $miyoo_sd/Roms/MD/
       $rom_copy $unraid_games/roms/mastersystem/ $miyoo_sd/Roms/MS/
+      $rom_copy $unraid_games/roms/neogeo/ $miyoo_sd/Roms/NEOGEO/
       $rom_copy $unraid_games/roms/nes/ $miyoo_sd/Roms/FC/
       $rom_copy $unraid_games/roms/sega32x/ $miyoo_sd/Roms/THIRTYTWOX/
       $rom_copy $unraid_games/roms/snes/ $miyoo_sd/Roms/SFC/

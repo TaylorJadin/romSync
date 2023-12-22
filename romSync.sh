@@ -67,7 +67,7 @@ roms() {
     $rom_copy $unraid_games/roms/genesis/ $mister_sd/games/Genesis/
     $rom_copy $unraid_games/roms/mastersystem/ $mister_sd/games/SMS/
     $rom_copy $unraid_games/roms/n64/ $mister_sd/games/N64/
-    $rom_copy $unraid_games/roms/neogeo/ $mister_sd/games/NEOGEO/
+    $rom_copy $unraid_games/roms/neogeo_mister/ $mister_sd/games/NEOGEO/
     $rom_copy $unraid_games/roms/nes/ $mister_sd/games/NES/
     $rom_copy $unraid_games/roms/sega32x/ $mister_sd/games/S32X/
     $rom_copy $unraid_games/roms/snes/ $mister_sd/games/SNES/

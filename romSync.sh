@@ -4,7 +4,7 @@
 mister='mister.home.jadin.me'
 miyoo='miyoo.home.jadin.me'
 unraid_games='/mnt/user/games'
-mister_sd='/media/fat'
+mister_sd='root@mister.home.jadin.me:/media/fat'
 miyoo_sd='/tmp/miyoo'
 save_sync="rsync -rLi --times --update"
 rom_copy="rsync -rLi --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
@@ -16,13 +16,13 @@ saves() {
   then
     echo ""
     echo "--> Backing up saves and screenshots from $mister"
-    $save_sync root@$mister:$mister_sd/saves/ $unraid_games/mister/saves/
-    $save_sync root@$mister:$mister_sd/savestates/ $unraid_games/mister/savestates/
-    $save_sync root@$mister:$mister_sd/screenshots/ $unraid_games/mister/screenshots/
+    $save_sync $mister_sd/saves/ $unraid_games/mister/saves/
+    $save_sync $mister_sd/savestates/ $unraid_games/mister/savestates/
+    $save_sync $mister_sd/screenshots/ $unraid_games/mister/screenshots/
     echo ""
     echo "--> Updating $mister with missing saves"
-    $save_sync $unraid_games/mister/saves/ root@$mister:$mister_sd/saves/
-    $save_sync $unraid_games/mister/savestates/ root@$mister:$mister_sd/savestates/
+    $save_sync $unraid_games/mister/saves/ $mister_sd/saves/
+    $save_sync $unraid_games/mister/savestates/ $mister_sd/savestates/
   fi
 
   if ping -c 1 $miyoo &> /dev/null
@@ -56,23 +56,23 @@ roms() {
   then
     echo ""
     echo "--> Copying roms to $mister"
-    $rom_copy $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
-    $rom_copy $unraid_games/roms/atari5200/ root@$mister:$mister_sd/games/ATARI5200/
-    $rom_copy $unraid_games/roms/atari7800/ root@$mister:$mister_sd/games/ATARI7800/
-    $rom_copy $unraid_games/roms/atarilynx/ root@$mister:$mister_sd/games/AtariLynx/
-    $rom_copy $unraid_games/roms/gamegear/ root@$mister:$mister_sd/games/GameGear/
-    $rom_copy $unraid_games/roms/gb/ root@$mister:$mister_sd/games/GAMEBOY/
-    $rom_copy $unraid_games/roms/gbc/ root@$mister:$mister_sd/games/GBC/
-    $rom_copy $unraid_games/roms/gba/ root@$mister:$mister_sd/games/GBA/
-    $rom_copy $unraid_games/roms/genesis/ root@$mister:$mister_sd/games/Genesis/
-    $rom_copy $unraid_games/roms/mastersystem/ root@$mister:$mister_sd/games/SMS/
-    $rom_copy $unraid_games/roms/n64/ root@$mister:$mister_sd/games/N64/
-    $rom_copy $unraid_games/roms/neogeo/ root@$mister:$mister_sd/games/NEOGEO/
-    $rom_copy $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
-    $rom_copy $unraid_games/roms/sega32x/ root@$mister:$mister_sd/games/S32X/
-    $rom_copy $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
-    $rom_copy $unraid_games/roms/tgfx16/ root@$mister:$mister_sd/games/TGFX16/
-    $rom_copy $unraid_games/roms/wonderswan/ root@$mister:$mister_sd/games/WonderSwan/
+    $rom_copy $unraid_games/roms/atari2600/ $mister_sd/games/ATARI2600/
+    $rom_copy $unraid_games/roms/atari5200/ $mister_sd/games/ATARI5200/
+    $rom_copy $unraid_games/roms/atari7800/ $mister_sd/games/ATARI7800/
+    $rom_copy $unraid_games/roms/atarilynx/ $mister_sd/games/AtariLynx/
+    $rom_copy $unraid_games/roms/gamegear/ $mister_sd/games/GameGear/
+    $rom_copy $unraid_games/roms/gb/ $mister_sd/games/GAMEBOY/
+    $rom_copy $unraid_games/roms/gbc/ $mister_sd/games/GBC/
+    $rom_copy $unraid_games/roms/gba/ $mister_sd/games/GBA/
+    $rom_copy $unraid_games/roms/genesis/ $mister_sd/games/Genesis/
+    $rom_copy $unraid_games/roms/mastersystem/ $mister_sd/games/SMS/
+    $rom_copy $unraid_games/roms/n64/ $mister_sd/games/N64/
+    $rom_copy $unraid_games/roms/neogeo/ $mister_sd/games/NEOGEO/
+    $rom_copy $unraid_games/roms/nes/ $mister_sd/games/NES/
+    $rom_copy $unraid_games/roms/sega32x/ $mister_sd/games/S32X/
+    $rom_copy $unraid_games/roms/snes/ $mister_sd/games/SNES/
+    $rom_copy $unraid_games/roms/tgfx16/ $mister_sd/games/TGFX16/
+    $rom_copy $unraid_games/roms/wonderswan/ $mister_sd/games/WonderSwan/
   fi
 
   if ping -c 1 $miyoo &> /dev/null

@@ -5,7 +5,9 @@ mister='mister.home.jadin.me'
 miyoo='192.168.1.243'
 unraid_games='/mnt/user/games'
 mister_sd='/media/fat'
-miyoo_mount='/tmp/miyoo'
+miyoo_roms='/tmp/miyoo-roms'
+miyoo_saves='/tmp/miyoo-saves'
+miyoo_screenshots='/tmp/miyoo-screenshots'
 save_sync="rsync -ri --times --copy-links --update"
 rom_copy="rsync -ri --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
@@ -32,30 +34,29 @@ saves() {
   then
     echo ""
     echo "--> Mounting $miyoo samba share"
-    mkdir -p $miyoo_mount/Saves
-    mkdir -p $miyoo_mount/Screenshots
-    mount -t cifs //$miyoo/Saves $miyoo_mount/Saves -o username=onion,password=onion
-    mount -t cifs //$miyoo/Screenshots $miyoo_mount/Screenshots -o username=onion,password=onion
-    if [ -e "/tmp/miyoo/Saves/README.txt" ];
+    mkdir -p $miyoo_saves
+    mkdir -p $miyoo_screenshots
+    mount -t cifs //$miyoo/Saves $miyoo_saves -o username=onion,password=onion
+    mount -t cifs //$miyoo/Screenshots $miyoo_screenshots -o username=onion,password=onion
+    if [ -e "$miyoo_saves/README.txt" ];
     then
       echo ""
       echo "--> Backing up saves and screenshots from $miyoo"
-      $save_sync $miyoo_mount/Saves/ $unraid_games/miyoo/saves/
-      $save_sync $miyoo_mount/Screenshots/ $unraid_games/miyoo/screenshots/
+      $save_sync $miyoo_saves $unraid_games/miyoo/saves/
+      $save_sync $miyoo_screenshots $unraid_games/miyoo/screenshots/
       echo ""
       echo "--> Updating $miyoo with missing saves"
-      $save_sync $unraid_games/miyoo/saves/  $miyoo_mount/Saves/
-      $save_sync $unraid_games/miyoo/screenshots/ $miyoo_mount/Screenshots/
+      $save_sync $unraid_games/miyoo/saves/ $miyoo_saves
+      $save_sync $unraid_games/miyoo/screenshots/ $miyoo_screenshots
     else
       echo "Problem mounting samba share."
     fi
     echo ""
     echo "--> Unmounting $miyoo samba share"
-    umount $miyoo_mount/Saves
-    umount $miyoo_mount/Screenshots
-    rmdir $miyoo_mount/Saves
-    rmdir $miyoo_mount/Screenshots
-    rmdir $miyoo_mount
+    umount $miyoo_saves
+    umount $miyoo_screenshots
+    rmdir $miyoo_saves
+    rmdir $miyoo_screenshots
   else
     echo ""
     echo "$miyoo not online."

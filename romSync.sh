@@ -23,9 +23,6 @@ saves() {
     echo "--> Updating $mister with missing saves"
     $save_sync $unraid_games/mister/saves/ root@$mister:$mister_sd/saves/
     $save_sync $unraid_games/mister/savestates/ root@$mister:$mister_sd/savestates/
-  else
-    echo ""
-    echo "$mister not online."
   fi
 
   if ping -c 1 $miyoo &> /dev/null
@@ -51,9 +48,6 @@ saves() {
     echo "--> Unmounting $miyoo samba share"
     umount $miyoo_sd
     rmdir $miyoo_sd
-  else
-    echo ""
-    echo "$miyoo not online."
   fi
 }
 
@@ -77,7 +71,42 @@ roms() {
     $rom_copy $unraid_games/roms/nes/ root@$mister:$mister_sd/games/NES/
     $rom_copy $unraid_games/roms/sega32x/ root@$mister:$mister_sd/games/S32X/
     $rom_copy $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
+    $rom_copy $unraid_games/roms/tgfx16/ root@$mister:$mister_sd/games/TGFX16/
     $rom_copy $unraid_games/roms/wonderswan/ root@$mister:$mister_sd/games/WonderSwan/
+  fi
+
+  if ping -c 1 $miyoo &> /dev/null
+  then
+    echo ""
+    echo "--> Mounting $miyoo samba share"
+    mkdir -p $miyoo_sd
+    mount -t cifs //$miyoo/__sdcard $miyoo_sd -o username=onion,password=onion
+    if [ -e "$miyoo_sd/system.json" ];
+    then
+      echo ""
+      echo "--> Copying roms to $miyoo"
+      $rom_copy $unraid_games/roms/atari2600/ $miyoo_sd/Roms/ATARI/
+      $rom_copy $unraid_games/roms/atari5200/ $miyoo_sd/Roms/FIFTYTWOHUNDRED/
+      $rom_copy $unraid_games/roms/atari7800/ $miyoo_sd/Roms/SEVENTYEIGHTHUNDRED/
+      $rom_copy $unraid_games/roms/atarilynx/ $miyoo_sd/Roms/LYNX/
+      $rom_copy $unraid_games/roms/gamegear/ $miyoo_sd/Roms/GG/
+      $rom_copy $unraid_games/roms/gb/ $miyoo_sd/Roms/GB/
+      $rom_copy $unraid_games/roms/gbc/ $miyoo_sd/Roms/GBC/
+      $rom_copy $unraid_games/roms/gba/ $miyoo_sd/Roms/GBA/
+      $rom_copy $unraid_games/roms/genesis/ $miyoo_sd/Roms/MD/
+      $rom_copy $unraid_games/roms/mastersystem/ $miyoo_sd/Roms/MS/
+      $rom_copy $unraid_games/roms/neogeo/ $miyoo_sd/Roms/NEOGEO/
+      $rom_copy $unraid_games/roms/nes/ $miyoo_sd/Roms/FC/
+      $rom_copy $unraid_games/roms/sega32x/ $miyoo_sd/Roms/THIRTYTWOX/
+      $rom_copy $unraid_games/roms/snes/ $miyoo_sd/Roms/SFC/
+      $rom_copy $unraid_games/roms/tgfx16/ $miyoo_sd/Roms/PCE/
+    else
+      echo "Problem mounting samba share."
+    fi
+    echo ""
+    echo "--> Unmounting $miyoo samba share"
+    umount $miyoo_sd
+    rmdir $miyoo_sd
   fi
 }
 

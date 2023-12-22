@@ -2,11 +2,10 @@
 
 ### Variables ###
 mister='mister.home.jadin.me'
-deck='taylor-deck.local'
+miyoo='192.168.1.243'
 unraid_games='/mnt/user/games'
-retropie_home='/home/pi/RetroPie'
 mister_sd='/media/fat'
-deck_emufolder='/home/deck/Emulation'
+miyoo_mount='/tmp/miyoo'
 save_sync="rsync -ri --times --copy-links --update"
 rom_copy="rsync -ri --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
@@ -29,12 +28,37 @@ saves() {
     echo "$mister not online."
   fi
 
-  if ping -c 1 $deck &> /dev/null
+  if ping -c 1 $miyoo &> /dev/null
   then
     echo ""
+    echo "--> Mounting $miyoo samba share"
+    mkdir -p $miyoo_mount/Saves
+    mkdir -p $miyoo_mount/Screenshots
+    mount -t cifs //$miyoo/Saves $miyoo_mount/Saves -o username=onion,password=onion
+    mount -t cifs //$miyoo/Screenshots $miyoo_mount/Screenshots -o username=onion,password=onion
+    if [ -e "/tmp/miyoo/Saves/README.txt" ];
+    then
+      echo ""
+      echo "--> Backing up saves and screenshots from $miyoo"
+      $save_sync $miyoo_mount/Saves/ $unraid_games/miyoo/saves/
+      $save_sync $miyoo_mount/Screenshots/ $unraid_games/miyoo/screenshots/
+      echo ""
+      echo "--> Updating $miyoo with missing saves"
+      $save_sync $unraid_games/miyoo/saves/  $miyoo_mount/Saves/
+      $save_sync $unraid_games/miyoo/screenshots/ $miyoo_mount/Screenshots/
+    else
+      echo "Problem mounting samba share."
+    fi
+    echo ""
+    echo "--> Unmounting $miyoo samba share"
+    umount $miyoo_mount/Saves
+    umount $miyoo_mount/Screenshots
+    rmdir $miyoo_mount/Saves
+    rmdir $miyoo_mount/Screenshots
+    rmdir $miyoo_mount
   else
     echo ""
-    echo "$deck not online."
+    echo "$miyoo not online."
   fi
 }
 
@@ -59,13 +83,6 @@ roms() {
     $rom_copy $unraid_games/roms/sega32x/ root@$mister:$mister_sd/games/S32X/
     $rom_copy $unraid_games/roms/snes/ root@$mister:$mister_sd/games/SNES/
     $rom_copy $unraid_games/roms/wonderswan/ root@$mister:$mister_sd/games/WonderSwan/
-  fi
-
-  if ping -c 1 $deck &> /dev/null
-  then
-    echo ""
-    echo "--> Copying roms from unraid to $deck"
-
   fi
 }
 
@@ -105,3 +122,4 @@ else
   shift
 done
 fi
+

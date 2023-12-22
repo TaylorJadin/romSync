@@ -5,9 +5,7 @@ mister='mister.home.jadin.me'
 miyoo='192.168.1.243'
 unraid_games='/mnt/user/games'
 mister_sd='/media/fat'
-miyoo_roms='/tmp/miyoo-roms'
-miyoo_saves='/tmp/miyoo-saves'
-miyoo_screenshots='/tmp/miyoo-screenshots'
+miyoo_sd='/tmp/miyoo'
 save_sync="rsync -ri --times --copy-links --update"
 rom_copy="rsync -ri --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
@@ -34,29 +32,25 @@ saves() {
   then
     echo ""
     echo "--> Mounting $miyoo samba share"
-    mkdir -p $miyoo_saves
-    mkdir -p $miyoo_screenshots
-    mount -t cifs //$miyoo/Saves $miyoo_saves -o username=onion,password=onion
-    mount -t cifs //$miyoo/Screenshots $miyoo_screenshots -o username=onion,password=onion
-    if [ -e "$miyoo_saves/README.txt" ];
+    mkdir -p $miyoo_sd
+    mount -t cifs //$miyoo/__sdcard $miyoo_sd -o username=onion,password=onion
+    if [ -e "$miyoo/system.json" ];
     then
       echo ""
       echo "--> Backing up saves and screenshots from $miyoo"
-      $save_sync $miyoo_saves/ $unraid_games/miyoo/saves/
-      $save_sync $miyoo_screenshots/ $unraid_games/miyoo/screenshots/
+      $save_sync $miyoo_sd/Saves/ $unraid_games/miyoo/Saves/
+      $save_sync $miyoo_sd/Screenshots/ $unraid_games/miyoo/Screenshots/
       echo ""
       echo "--> Updating $miyoo with missing saves"
-      $save_sync $unraid_games/miyoo/saves/ $miyoo_saves/
-      $save_sync $unraid_games/miyoo/screenshots/ $miyoo_screenshots/
+      $save_sync $unraid_games/miyoo/Saves/ $miyoo_sd/Saves/
+      $save_sync $unraid_games/miyoo/Screenshots/ $miyoo_sd/Screenshots/
     else
       echo "Problem mounting samba share."
     fi
     echo ""
     echo "--> Unmounting $miyoo samba share"
-    umount $miyoo_saves
-    umount $miyoo_screenshots
-    rmdir $miyoo_saves
-    rmdir $miyoo_screenshots
+    umount $miyoo_sd
+    rmdir $miyoo_sd
   else
     echo ""
     echo "$miyoo not online."

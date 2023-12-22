@@ -2,7 +2,7 @@
 
 ### Variables ###
 mister='mister.home.jadin.me'
-miyoo='192.168.1.243'
+miyoo='miyoo.home.jadin.me'
 unraid_games='/mnt/user/games'
 mister_sd='/media/fat'
 miyoo_sd='/tmp/miyoo'

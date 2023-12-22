@@ -34,7 +34,7 @@ saves() {
     echo "--> Mounting $miyoo samba share"
     mkdir -p $miyoo_sd
     mount -t cifs //$miyoo/__sdcard $miyoo_sd -o username=onion,password=onion
-    if [ -e "$miyoo/system.json" ];
+    if [ -e "$miyoo_sd/system.json" ];
     then
       echo ""
       echo "--> Backing up saves and screenshots from $miyoo"

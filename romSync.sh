@@ -6,8 +6,8 @@ miyoo='miyoo.home.jadin.me'
 unraid_games='/mnt/user/games'
 mister_sd='/media/fat'
 miyoo_sd='/tmp/miyoo'
-save_sync="rsync -ri --times --copy-links --update"
-rom_copy="rsync -ri --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
+save_sync="rsync -rLi --times --update"
+rom_copy="rsync -rLi --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 

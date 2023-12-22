@@ -61,7 +61,7 @@ roms() {
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
-    echo "--> Copying roms from unraid to $mister"
+    echo "--> Copying roms to $mister"
     $rom_copy $unraid_games/roms/atari2600/ root@$mister:$mister_sd/games/ATARI2600/
     $rom_copy $unraid_games/roms/atari5200/ root@$mister:$mister_sd/games/ATARI5200/
     $rom_copy $unraid_games/roms/atari7800/ root@$mister:$mister_sd/games/ATARI7800/

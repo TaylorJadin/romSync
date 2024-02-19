@@ -19,6 +19,7 @@ saves() {
     $save_sync $mister_sd/saves/ $unraid_games/mister/saves/
     $save_sync $mister_sd/savestates/ $unraid_games/mister/savestates/
     $save_sync $mister_sd/screenshots/ $unraid_games/mister/screenshots/
+    echo ""
     echo "--> Backup up saves and screenshots from Pocket"
     $save_sync $mister_sd/pocket/ $unraid_games/pocket/
     echo ""

@@ -15,6 +15,9 @@ saves() {
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
+    echo "--> Running Mister update_all"
+    ssh root@mister.home.jadin.me /media/fat/Scripts/mister/update_all.sh
+    echo ""
     echo "--> Backing up saves and screenshots from $mister"
     $save_sync $mister_sd/saves/ $unraid_games/mister/saves/
     $save_sync $mister_sd/savestates/ $unraid_games/mister/savestates/

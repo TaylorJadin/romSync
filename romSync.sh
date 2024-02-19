@@ -16,7 +16,7 @@ saves() {
   then
     echo ""
     echo "--> Running Mister update_all"
-    ssh root@mister.home.jadin.me /media/fat/Scripts/mister/update_all.sh
+    ssh root@mister.home.jadin.me /media/fat/Scripts/update_all.sh
     echo ""
     echo "--> Backing up saves and screenshots from $mister"
     $save_sync $mister_sd/saves/ $unraid_games/mister/saves/

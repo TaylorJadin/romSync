@@ -19,7 +19,7 @@ saves() {
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
-    echo "--> Running Mister update_all"
+    echo "--> Running update_all script on $mister"
     ssh root@mister.home.jadin.me /media/fat/Scripts/update_all.sh
     echo ""
     echo "--> Backup up computer cores"

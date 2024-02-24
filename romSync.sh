@@ -11,12 +11,20 @@ rom_copy="rsync -rLi --ignore-existing --exclude-from=/mnt/user/appdata/romSync/
 
 ### Functions ###
 
+update() {
+  cd /mnt/user/appdata/romSync && git pull
+}
+
 saves() {
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
     echo "--> Running Mister update_all"
     ssh root@mister.home.jadin.me /media/fat/Scripts/update_all.sh
+    echo ""
+    echo "--> Backup up computer cores"
+    $save_sync $mister_sd/games/AO486/ $unraid_games/mister/games/AO486/
+    $save_sync $mister_sd/games/MACPLUS/ $unraid_games/mister/games/MACPLUS/
     echo ""
     echo "--> Backing up saves and screenshots from $mister"
     $save_sync $mister_sd/saves/ $unraid_games/mister/saves/
@@ -128,17 +136,20 @@ usage() {
 
 ### Main ###
 if [ "$1" = "" ]; then
+  update
   saves
   roms
 else
   while [ "$1" != "" ]; do
   case $1 in
     -r | --roms ) shift
+                  update
                   echo "--> Roms"
                   roms
                   echo ""
                   ;;
     -s | --saves) shift
+                  update
                   echo "--> Saves"
                   saves
                   echo ""

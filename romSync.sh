@@ -19,9 +19,6 @@ saves() {
   if ping -c 1 $mister &> /dev/null
   then
     echo ""
-    echo "--> Running update_all script on $mister"
-    ssh root@mister.home.jadin.me /media/fat/Scripts/update_all.sh
-    echo ""
     echo "--> Backup up computer cores"
     $save_sync $mister_sd/games/AO486/ $unraid_games/mister/games/AO486/
     $save_sync $mister_sd/games/MACPLUS/ $unraid_games/mister/games/MACPLUS/
@@ -30,9 +27,6 @@ saves() {
     $save_sync $mister_sd/saves/ $unraid_games/mister/saves/
     $save_sync $mister_sd/savestates/ $unraid_games/mister/savestates/
     $save_sync $mister_sd/screenshots/ $unraid_games/mister/screenshots/
-    echo ""
-    echo "--> Backup up saves and screenshots from Pocket"
-    $save_sync $mister_sd/pocket/ $unraid_games/pocket/
     echo ""
     echo "--> Updating $mister with missing saves"
     $save_sync $unraid_games/mister/saves/ $mister_sd/saves/
@@ -126,7 +120,7 @@ roms() {
 
 usage() {
    # Display Help
-   echo "Sync ROMs and saves from retropie devices with my unraid shares."
+   echo "Sync ROMs and saves from various devices with my unraid shares."
    echo "Using no flags will will first sync saves then roms. If any of"
    echo "the devices are unreachable it will skip those devices."
    echo

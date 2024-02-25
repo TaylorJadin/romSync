@@ -1,5 +1,5 @@
-rom_copy="rsync -rLi --ignore-existing --exclude-from=./exclude.txt"
-save_sync="rsync -rLi --times --update"
+rom_copy="rsync -ri --ignore-existing --exclude-from=./exclude.txt"
+save_sync="rsync -ri --times --update"
 unraid_games=root@unraid.jadin.me:/mnt/user/games
 
 saves() {

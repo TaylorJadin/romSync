@@ -13,20 +13,21 @@ saves() {
 }
 
 roms() {
+    echo ""
     echo "--> Copying roms to Pocket"
-    $rom_copy $unraid_games/atari2600/ ./Assets/2600/common/
-    $rom_copy $unraid_games/atari7800/ ./Assets/7800/common/
-    $rom_copy $unraid_games/gb/ ./Assets/gb/common/
-    $rom_copy $unraid_games/gba/ ./Assets/gba/common/
-    $rom_copy $unraid_games/gbc/ ./Assets/gbc/common/
-    $rom_copy $unraid_games/genesis/ ./Assets/genesis/common/
-    $rom_copy $unraid_games/gamegear/ ./Assets/gg/common/
-    $rom_copy $unraid_games/neogeo_mister/ ./Assets/ng/common/
-    $rom_copy $unraid_games/nes/ ./Assets/nes/common/
-    $rom_copy $unraid_games/mastersystem/ ./Assets/sms/common/
-    $rom_copy $unraid_games/snes/ ./Assets/snes/common/
-    $rom_copy $unraid_games/tgfx16/ ./Assets/pce/common/
-    $rom_copy $unraid_games/wonderswan/ ./Assets/wonderswan/common/
+    $rom_copy $unraid_games/roms/atari2600/ ./Assets/2600/common/
+    $rom_copy $unraid_games/roms/atari7800/ ./Assets/7800/common/
+    $rom_copy $unraid_games/roms/gb/ ./Assets/gb/common/
+    $rom_copy $unraid_games/roms/gba/ ./Assets/gba/common/
+    $rom_copy $unraid_games/roms/gbc/ ./Assets/gbc/common/
+    $rom_copy $unraid_games/roms/genesis/ ./Assets/genesis/common/
+    $rom_copy $unraid_games/roms/gamegear/ ./Assets/gg/common/
+    $rom_copy $unraid_games/roms/neogeo_mister/ ./Assets/ng/common/
+    $rom_copy $unraid_games/roms/nes/ ./Assets/nes/common/
+    $rom_copy $unraid_games/roms/mastersystem/ ./Assets/sms/common/
+    $rom_copy $unraid_games/roms/snes/ ./Assets/snes/common/
+    $rom_copy $unraid_games/roms/tgfx16/ ./Assets/pce/common/
+    $rom_copy $unraid_games/roms/wonderswan/ ./Assets/wonderswan/common/
 }
 
 usage() {

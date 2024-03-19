@@ -6,6 +6,8 @@ miyoo='miyoo.home.jadin.me'
 unraid_games='/mnt/user/games'
 mister_sd='root@mister.home.jadin.me:/media/fat'
 miyoo_sd='/tmp/miyoo'
+taylorpc='pc.home.jadin.me'
+taylorpc_share='/tmp/taylorpc'
 save_sync="rsync -rLi --times --update"
 rom_copy="rsync -rLi --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
@@ -57,6 +59,30 @@ saves() {
     umount $miyoo_sd
     rmdir $miyoo_sd
   fi
+
+  if ping -c 1 $taylorpc &> /dev/null
+  then
+    echo ""
+    echo "--> Mounting $taylorpc samba share"
+    mkdir -p $taylorpc_share
+    mount -t cifs //$taylorpc/Emulation $taylorpc_share -o username=smbguest,password=smbguest
+    if [ -e "$taylorpc_share/saves/.hash" ];
+    then
+      echo ""
+      echo "--> Backing up saves and screenshots from $taylorpc"
+      $save_sync $taylorpc_share/Saves/ $unraid_games/taylorpc/Saves/
+      echo ""
+      echo "--> Updating $miyoo with missing saves"
+      $save_sync $unraid_games/taylorpc/Saves/ $taylorpc_share/Saves/
+    else
+      echo "Problem mounting samba share."
+    fi
+    echo ""
+    echo "--> Unmounting $taylorpc samba share"
+    umount $taylorpc_share
+    rmdir $taylorpc_share
+  fi
+  
 }
 
 roms() {

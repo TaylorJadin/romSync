@@ -2,12 +2,15 @@
 
 ### Variables ###
 mister='mister.home.jadin.me'
-miyoo='miyoo.home.jadin.me'
-unraid_games='/mnt/user/games'
 mister_sd='root@mister.home.jadin.me:/media/fat'
+# deck='deck.home.jadin.me'
+deck='192.168.1.232'
+deck_storage='/home/deck/Emulation'
+miyoo='miyoo.home.jadin.me'
 miyoo_sd='/tmp/miyoo'
 taylorpc='pc.home.jadin.me'
 taylorpc_share='/tmp/taylorpc'
+unraid_games='/mnt/user/games'
 save_sync="rsync -rLi --times --update"
 rom_copy="rsync -rLi --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
@@ -33,6 +36,16 @@ saves() {
     echo "--> Updating $mister with missing saves"
     $save_sync $unraid_games/mister/saves/ $mister_sd/saves/
     $save_sync $unraid_games/mister/savestates/ $mister_sd/savestates/
+  fi
+
+  if ping -c 1 $deck &> /dev/null
+  then
+    echo ""
+    echo "--> Backing up saves from $deck"
+    $save_sync $deck_storage/saves/ $unraid_games/deck/saves/
+    echo ""
+    echo "--> Updating $deck with missing saves"
+    $save_sync $unraid_games/deck/saves/ $deck_storage/saves/
   fi
 
   if ping -c 1 $miyoo &> /dev/null
@@ -72,7 +85,7 @@ saves() {
       echo "--> Backing up saves and screenshots from $taylorpc"
       $save_sync $taylorpc_share/Saves/ $unraid_games/taylorpc/Saves/
       echo ""
-      echo "--> Updating $miyoo with missing saves"
+      echo "--> Updating $taylorpc with missing saves"
       $save_sync $unraid_games/taylorpc/Saves/ $taylorpc_share/Saves/
     else
       echo "Problem mounting samba share."

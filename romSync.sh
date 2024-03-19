@@ -105,7 +105,7 @@ roms() {
     $rom_copy $unraid_games/roms/nes/ $mister_sd/games/NES/
     $rom_copy $unraid_games/roms/sega32x/ $mister_sd/games/S32X/
     $rom_copy $unraid_games/roms/snes/ $mister_sd/games/SNES/
-    $rom_copy $unraid_games/roms/tgfx16/ $mister_sd/games/TGFX16/
+    $rom_copy $unraid_games/roms/tg16/ $mister_sd/games/TGFX16/
     $rom_copy $unraid_games/roms/wonderswan/ $mister_sd/games/WonderSwan/
   fi
 
@@ -133,7 +133,7 @@ roms() {
       $rom_copy $unraid_games/roms/nes/ $miyoo_sd/Roms/FC/
       $rom_copy $unraid_games/roms/sega32x/ $miyoo_sd/Roms/THIRTYTWOX/
       $rom_copy $unraid_games/roms/snes/ $miyoo_sd/Roms/SFC/
-      $rom_copy $unraid_games/roms/tgfx16/ $miyoo_sd/Roms/PCE/
+      $rom_copy $unraid_games/roms/tg16/ $miyoo_sd/Roms/PCE/
     else
       echo "Problem mounting samba share."
     fi

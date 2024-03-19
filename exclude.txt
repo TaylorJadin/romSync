@@ -1,4 +1,11 @@
-media
-gamelist*
-mame2003
 4 Game Series Collection*
+dreamcast/
+gamecube/
+pc_games/
+ps3/
+psx/
+saturn/
+segacd/
+tg-cd/
+wiiu/
+xbox/

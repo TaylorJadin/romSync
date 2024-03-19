@@ -122,6 +122,13 @@ roms() {
     $rom_copy $unraid_games/roms/wonderswan/ $mister_sd/games/WonderSwan/
   fi
 
+  if ping -c 1 $deck &> /dev/null
+  then
+    echo ""
+    echo "--> Copying froms to $deck"
+    $rom_copy $unraid_games/roms/ $deck_storage/roms/
+  fi
+
   if ping -c 1 $miyoo &> /dev/null
   then
     echo ""
@@ -155,26 +162,6 @@ roms() {
     umount $miyoo_sd
     rmdir $miyoo_sd
   fi
-
-  # if ping -c 1 $taylorpc &> /dev/null
-  # then
-  #   echo ""
-  #   echo "--> Mounting $taylorpc samba share"
-  #   mkdir -p $taylorpc_share
-  #   mount -t cifs //$taylorpc/Emulation $taylorpc_share -o username=smbguest,password=smbguest
-  #   if [ -e "$taylorpc_share/saves/.hash" ];
-  #   then
-  #     echo ""
-  #     echo "--> Copying roms to $taylorpc"
-  #     $rom_copy $unraid_games/roms/ $taylorpc_share/roms/
-  #   else
-  #     echo "Problem mounting samba share."
-  #   fi
-  #   echo ""
-  #   echo "--> Unmounting $taylorpc samba share"
-  #   umount $taylorpc_share
-  #   rmdir $taylorpc_share
-  # fi
 }
 
 usage() {

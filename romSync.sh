@@ -153,7 +153,7 @@ roms() {
     then
       echo ""
       echo "--> Copying roms to $taylorpc"
-      $rom_copy $unraid_games/roms/ $taylorpc_share/Emulation/roms/
+      $rom_copy $unraid_games/roms/ $taylorpc_share/roms/
     else
       echo "Problem mounting samba share."
     fi

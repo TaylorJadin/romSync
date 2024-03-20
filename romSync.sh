@@ -196,7 +196,6 @@ usage() {
 
 ### Main ###
 if [ "$1" = "" ]; then
-  update
   saves
   roms
 else

@@ -190,7 +190,7 @@ usage() {
    echo "Using no flags will will first sync saves then roms. If any of"
    echo "the devices are unreachable it will skip those devices."
    echo
-   echo "Syntax: romSync [--roms | --saves | --help]"
+   echo "Syntax: romSync [--roms | --saves | --update | --help]"
    echo
 }
 
@@ -203,16 +203,18 @@ else
   while [ "$1" != "" ]; do
   case $1 in
     -r | --roms ) shift
-                  update
                   echo "--> Roms"
                   roms
                   echo ""
                   ;;
     -s | --saves) shift
-                  update
                   echo "--> Saves"
                   saves
                   echo ""
+                  ;;
+    -u | --update) shift
+                  echo "--> Pulling updates from GitHub"
+                  update
                   ;;
     -h | --help ) usage
                   exit

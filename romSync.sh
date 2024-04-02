@@ -36,6 +36,8 @@ saves() {
     echo "--> Updating $mister with missing saves"
     $save_sync $unraid_games/mister/saves/ $mister_sd/saves/
     $save_sync $unraid_games/mister/savestates/ $mister_sd/savestates/
+    # Fix Permissions
+    chmod -R 777 $unraid_games/mister
   fi
 
   if ping -c 1 $deck &> /dev/null
@@ -46,6 +48,8 @@ saves() {
     echo ""
     echo "--> Updating $deck with missing saves"
     $save_sync $unraid_games/deck/saves/ $deck_storage/saves/
+    # Fix Permissions
+    chmod -R 777 $unraid_games/deck
   fi
 
   if ping -c 1 $miyoo &> /dev/null
@@ -71,6 +75,8 @@ saves() {
     echo "--> Unmounting $miyoo samba share"
     umount $miyoo_sd
     rmdir $miyoo_sd
+    # Fix Permissions
+    chmod -R 777 $unraid_games/miyoo
   fi
 
   if ping -c 1 $taylorpc &> /dev/null
@@ -94,8 +100,9 @@ saves() {
     echo "--> Unmounting $taylorpc samba share"
     umount $taylorpc_share
     rmdir $taylorpc_share
+    # Fix Permissions
+    chmod -R 777 $unraid_games/taylorpc
   fi
-  
 }
 
 roms() {

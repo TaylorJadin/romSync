@@ -62,12 +62,12 @@ saves() {
     then
       echo ""
       echo "--> Backing up saves and screenshots from $miyoo"
-      $save_sync $miyoo_sd/Saves/ $unraid_games/miyoo/Saves/
-      $save_sync $miyoo_sd/Screenshots/ $unraid_games/miyoo/Screenshots/
+      $save_sync $miyoo_sd/Saves/CurrentProfile/saves/ $unraid_games/miyoo/saves/
+      $save_sync $miyoo_sd/Saves/CurrentProfile/states/ $unraid_games/miyoo/states/
+      $save_sync $miyoo_sd/Screenshots/ $unraid_games/miyoo/screenshots/
       echo ""
       echo "--> Updating $miyoo with missing saves"
-      $save_sync $unraid_games/miyoo/Saves/ $miyoo_sd/Saves/
-      $save_sync $unraid_games/miyoo/Screenshots/ $miyoo_sd/Screenshots/
+      $save_sync $unraid_games/miyoo/saves/ $miyoo_sd/Saves/CurrentProfile/saves/
     else
       echo "Problem mounting samba share."
     fi

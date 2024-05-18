@@ -3,9 +3,8 @@
 ### Variables ###
 mister='mister.home.jadin.me'
 mister_sd='root@mister.home.jadin.me:/media/fat'
-# deck='deck.home.jadin.me'
-deck='192.168.1.232'
-deck_storage='deck@192.168.1.232:/home/deck/Emulation'
+deck='deck.home.jadin.me'
+deck_storage='deck@deck.home.jadin.me:/home/deck/Emulation'
 miyoo='miyoo.home.jadin.me'
 miyoo_sd='/tmp/miyoo'
 taylorpc='pc.home.jadin.me'

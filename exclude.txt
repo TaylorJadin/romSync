@@ -6,6 +6,5 @@ ps3/
 psx/
 saturn/
 segacd/
-tg-cd/
 wiiu/
 xbox/

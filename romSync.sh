@@ -3,14 +3,14 @@
 ### Variables ###
 retronas_dir='/data/retronas'
 deck='deck.jadin.me'
-deck_storage='deck@deck.jadin.me:/home/deck/Retrodeck'
+deck_storage='deck@deck.jadin.me:/run/media/deck/Retrodeck/retrodeck'
 save_sync="rsync -rLi --times --update"
 rom_copy="rsync -rLi --ignore-existing --exclude-from=/mnt/user/appdata/romSync/exclude.txt"
 
 ### Functions ###
 
 update() {
-  cd $retronas_dir/romSync && git pull
+  cd ~/romsync && git pull
 }
 
 saves() {

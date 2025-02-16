@@ -5,6 +5,7 @@ pc_games/
 ps3/
 psx/
 saturn/
+saturnjp/
 segacd/
 wiiu/
 xbox/

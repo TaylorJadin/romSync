@@ -5,7 +5,7 @@ retronas_dir='/data/retronas'
 deck='deck.jadin.me'
 deck_storage='deck@deck.jadin.me:/run/media/deck/Retrodeck/retrodeck'
 save_sync="rsync -rLi --times --update"
-rom_copy="rsync -rLi --ignore-existing --exclude-from=~/romsync/exclude.txt"
+rom_copy="rsync -rLi --ignore-existing --exclude-from=/home/retronas/romsync/exclude.txt"
 
 ### Functions ###
 
@@ -33,7 +33,7 @@ roms() {
     echo "--> Copying bios files to $deck"
     $rom_copy $retronas_dir/retrodeck/bios/ $deck_storage/bios/
     echo ""
-    echo "--> Copying froms to $deck"
+    echo "--> Copying roms to $deck"
     $rom_copy $retronas_dir/retrodeck/roms/ $deck_storage/roms/
   fi
 }

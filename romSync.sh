@@ -5,7 +5,7 @@ retronas_dir='/data/retronas'
 deck='deck.jadin.me'
 deck_storage='deck@deck.jadin.me:/run/media/deck/Retrodeck/retrodeck'
 save_sync="rsync -rLi --times --update"
-rom_copy="rsync -rLi --ignore-existing --exclude-from=/home/retronas/romsync/exclude.txt"
+rom_copy="rsync -rLi --ignore-existing --delete --exclude-from=/home/retronas/romsync/exclude.txt"
 
 ### Functions ###
 

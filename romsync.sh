@@ -7,7 +7,7 @@ deck_storage="deck@$deck:/run/media/deck/Retrodeck/retrodeck"
 retroid="retroid.jadin.me"
 retroid_storage="$retroid:/storage/6F36-FFFB"
 rom_copy="rsync -rLi --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt"
-retroid_rom_copy="rsync -rLi -e 'ssh -p 2222' --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt"
+retroid_rom_copy="rsync -rLi -e ssh -p 2222 --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt"
 
 ### Functions ###
 

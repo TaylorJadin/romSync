@@ -7,6 +7,7 @@ deck_storage="deck@$deck:/run/media/deck/Retrodeck/retrodeck"
 retroid="retroid.jadin.me"
 retroid_storage="$retroid:/storage/6F36-FFFB"
 rom_copy="rsync -rLi --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt"
+rom_copy="rsync -rLi -e 'ssh -p 2222' --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt"
 
 ### Functions ###
 
@@ -30,10 +31,10 @@ roms() {
   then
     echo ""
     echo "--> Copying bios files to $retroid"
-    $rom_copy $retronas_dir/retroid/bios/ $retroid_storage/bios/
+    $retroid_rom_copy $retronas_dir/retrodeck/bios/ $retroid_storage/bios/
     echo ""
     echo "--> Copying roms to $retroid"
-    $rom_copy $retronas_dir/retroid/roms/ $retroid_storage/roms/
+    $retroid_rom_copy $retronas_dir/retrodeck/roms/ $retroid_storage/roms/
   fi
 }
 

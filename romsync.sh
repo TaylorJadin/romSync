@@ -17,7 +17,7 @@ rom_copy() {
     shift 2
   fi
   
-  rsync -rLi -e "ssh -p $port" --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt "$@"
+  rsync -rLi -e "ssh -p $port" --delete --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt "$@"
 }
 
 ### Functions ###

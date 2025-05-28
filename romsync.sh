@@ -6,9 +6,18 @@ deck="deck.jadin.me"
 deck_storage="deck@$deck:/run/media/deck/Retrodeck/retrodeck"
 retroid="retroid.jadin.me"
 retroid_storage="$retroid:/storage/6F36-FFFB"
-rom_copy="rsync -rLi --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt"
-retroid_rom_copy() {
-  rsync -rLi -e "ssh -p 2222" --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt "$@"
+
+### Functions ###
+
+rom_copy() {
+  local port=22
+  # Check for --port argument
+  if [[ "$1" == "--port" ]]; then
+    port="$2"
+    shift 2
+  fi
+  
+  rsync -rLi -e "ssh -p $port" --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt "$@"
 }
 
 ### Functions ###
@@ -23,20 +32,20 @@ roms() {
   then
     echo ""
     echo "--> Copying bios files to $deck"
-    $rom_copy $retronas_dir/retrodeck/bios/ $deck_storage/bios/
+    rom_copy "$retronas_dir/retrodeck/bios/" "$deck_storage/bios/"
     echo ""
     echo "--> Copying roms to $deck"
-    $rom_copy $retronas_dir/retrodeck/roms/ $deck_storage/roms/
+    rom_copy "$retronas_dir/retrodeck/roms/" "$deck_storage/roms/"
   fi
 
   if ping -c 1 $retroid &> /dev/null
   then
     echo ""
     echo "--> Copying bios files to $retroid"
-    retroid_rom_copy "$retronas_dir/retrodeck/bios/" "$retroid_storage/bios/"
+    rom_copy --port 2222 "$retronas_dir/retrodeck/bios/" "$retroid_storage/bios/"
     echo ""
     echo "--> Copying roms to $retroid"
-    retroid_rom_copy "$retronas_dir/retrodeck/roms/" "$retroid_storage/roms/"
+    rom_copy --port 2222 "$retronas_dir/retrodeck/roms/" "$retroid_storage/roms/"
   fi
 }
 

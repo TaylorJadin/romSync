@@ -31,10 +31,10 @@ roms() {
   then
     echo ""
     echo "--> Copying bios files to $retroid"
-    $retroid_rom_copy $retronas_dir/retrodeck/bios/ $retroid_storage/bios/
+    $retroid_rom_copy $retronas_dir/retrodeck/bios $retroid_storage/bios
     echo ""
     echo "--> Copying roms to $retroid"
-    $retroid_rom_copy $retronas_dir/retrodeck/roms/ $retroid_storage/roms/
+    $retroid_rom_copy $retronas_dir/retrodeck/roms $retroid_storage/roms
   fi
 }
 

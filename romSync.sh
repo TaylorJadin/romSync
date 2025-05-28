@@ -1,28 +1,17 @@
 #!/bin/bash
 
 ### Variables ###
-retronas_dir='/data/retronas'
-deck='deck.jadin.me'
-deck_storage='deck@deck.jadin.me:/run/media/deck/Retrodeck/retrodeck'
-save_sync="rsync -rLi --times --update"
-rom_copy="rsync -rLi --ignore-existing --delete --exclude-from=/home/retronas/romsync/exclude.txt"
+retronas_dir="/data/retronas"
+deck="deck.jadin.me"
+deck_storage="deck@$deck:/run/media/deck/Retrodeck/retrodeck"
+retroid="retroid.jadin.me"
+retroid_storage="$retroid:/storage/6F36-FFFB"
+rom_copy="rsync -rLi --ignore-existing --max-size=1G --exclude-from=/home/retronas/romsync/exclude.txt"
 
 ### Functions ###
 
 update() {
   cd ~/romsync && git pull
-}
-
-saves() {
-  if ping -c 1 $deck &> /dev/null
-  then
-    echo ""
-    echo "--> Backing up saves from $deck"
-    $save_sync $deck_storage/saves/ $retronas_dir/retrodeck/saves/
-    echo ""
-    echo "--> Updating $deck with missing saves"
-    $save_sync $retronas_dir/retrodeck/saves/ $deck_storage/saves/
-  fi
 }
 
 roms() {
@@ -36,21 +25,28 @@ roms() {
     echo "--> Copying roms to $deck"
     $rom_copy $retronas_dir/retrodeck/roms/ $deck_storage/roms/
   fi
+
+  if ping -c 1 $retroid &> /dev/null
+  then
+    echo ""
+    echo "--> Copying bios files to $retroid"
+    $rom_copy $retronas_dir/retroid/bios/ $retroid_storage/bios/
+    echo ""
+    echo "--> Copying roms to $retroid"
+    $rom_copy $retronas_dir/retroid/roms/ $retroid_storage/roms/
+  fi
 }
 
 usage() {
    # Display Help
    echo "Sync ROMs and saves from various devices with my retronas."
-   echo "Using no flags will will first sync saves then roms. If any"
-   echo "devices are unreachable it will skip those devices."
    echo
-   echo "Syntax: romSync [--roms | --saves | --update | --help]"
+   echo "Syntax: romSync [--roms | --update | --help]"
    echo
 }
 
 ### Main ###
 if [ "$1" = "" ]; then
-  saves
   roms
 else
   while [ "$1" != "" ]; do
@@ -58,11 +54,6 @@ else
     -r | --roms ) shift
                   echo "--> Roms"
                   roms
-                  echo ""
-                  ;;
-    -s | --saves) shift
-                  echo "--> Saves"
-                  saves
                   echo ""
                   ;;
     -u | --update) shift

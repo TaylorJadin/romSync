@@ -1,11 +1,2 @@
 4 Game Series Collection*
-dreamcast/
-gamecube/
 pc_games/
-ps3/
-psx/
-saturn/
-saturnjp/
-segacd/
-wiiu/
-xbox/

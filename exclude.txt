@@ -1,5 +1,6 @@
 4 Game Series Collection*
 pc_games/
 *.7z
-.txt
-.xml
+*.zip
+*.txt
+*.xml
